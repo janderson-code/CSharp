@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JottaRabbit.API.Controllers
 {
+    [ApiController]
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
