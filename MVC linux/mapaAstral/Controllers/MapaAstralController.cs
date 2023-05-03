@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using mapaAstral.data;
 using mapaAstral.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace mapaAstral.Controllers
 {
@@ -36,12 +31,23 @@ namespace mapaAstral.Controllers
 
         public IActionResult CreateSigno()
         {
+            List<Elemento> elementos = new List<Elemento>{
+               new Elemento{Id = 1, Nome = "Ar"},
+               new Elemento{Id = 2, Nome = "Agua"},
+               new Elemento{Id = 3, Nome = "Fogo"},
+               new Elemento{Id = 4, Nome = "Terra"},
+
+            };
+            ViewBag.elementos = new SelectList(elementos,"Id","Nome");
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateSigno([Bind("Nome,DataInicio,DataFim,Elemento,Regente")] Signo signo)
+        public async Task<IActionResult> CreateSigno(
+            [Bind("Nome,DataInicio,DataFim,Elemento,Regente")] Signo signo
+        )
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +77,10 @@ namespace mapaAstral.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditSigno(int id, [Bind("Id,Nome,DataInicio,DataFim,Elemento,Regente")] Signo signo)
+        public async Task<IActionResult> EditSigno(
+            int id,
+            [Bind("Id,Nome,DataInicio,DataFim,Elemento,Regente")] Signo signo
+        )
         {
             if (id != signo.Id)
             {
@@ -123,8 +132,11 @@ namespace mapaAstral.Controllers
         public async Task<IActionResult> DeleteSignoConfirmed(int id)
         {
             var signo = await _context.Signos.FindAsync(id);
-            _context.Signos.Remove(signo);
-            await _context.SaveChangesAsync();
+            if (signo != null)
+            {
+                _context.Signos.Remove(signo);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Signos));
         }
 
@@ -147,7 +159,9 @@ namespace mapaAstral.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePlaneta([Bind("Nome,Simbolo,Elemento,Casa")] Planeta planeta)
+        public async Task<IActionResult> CreatePlaneta(
+            [Bind("Nome,Simbolo,Elemento,Casa")] Planeta planeta
+        )
         {
             if (ModelState.IsValid)
             {
@@ -173,10 +187,6 @@ namespace mapaAstral.Controllers
             }
 
             return View(planeta);
-
-
         }
-
-
     }
 }
