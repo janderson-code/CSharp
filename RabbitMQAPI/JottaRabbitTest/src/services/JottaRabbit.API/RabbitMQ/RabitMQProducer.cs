@@ -1,7 +1,4 @@
-﻿using JottaRabbit.API.Models;
-using JottaRabbit.API.Services;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 
@@ -18,12 +15,12 @@ namespace JottaRabbit.API.RabbitMQ
             };
             //Create the RabbitMQ connection using connection factory details as i mentioned above
             var connection = factory.CreateConnection();
-            
+
             //Here we create channel with session and model
             using var channel = connection.CreateModel();
 
             //declare the queue after mentioning name and a few property related to that
-            channel.QueueDeclare("product",durable:true,exclusive:false, autoDelete: false);
+            channel.QueueDeclare("product", durable: true, exclusive: false, autoDelete: false);
 
             //Serialize the message
             var json = JsonConvert.SerializeObject(message);
