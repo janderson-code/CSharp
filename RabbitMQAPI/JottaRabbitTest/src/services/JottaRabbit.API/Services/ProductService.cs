@@ -32,7 +32,7 @@ namespace JottaRabbit.API.Services
         }
         public bool DeleteProduct(int Id)
         {
-            var filteredData = _dbContext.Products.Where(x => x.ProductId == Id).FirstOrDefault();
+            Product filteredData = _dbContext.Products.Where(x => x.ProductId == Id).First();
             var result = _dbContext.Remove(filteredData);
             _dbContext.SaveChanges();
             return result != null ? true : false;
