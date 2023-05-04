@@ -37,7 +37,9 @@ namespace JottaRabbit.API.Controllers
         [HttpPut("updateproduct")]
         public Product UpdateProduct(Product product)
         {
-            return productService.UpdateProduct(product);
+            Product updatedProduct =  productService.UpdateProduct(product);
+            _rabitMQProducer.SendProductMessage(updatedProduct);
+            return updatedProduct;
         }
         [HttpDelete("deleteproduct")]
         public bool DeleteProduct(int Id)
