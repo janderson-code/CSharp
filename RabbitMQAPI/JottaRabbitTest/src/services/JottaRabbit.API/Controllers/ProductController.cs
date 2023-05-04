@@ -10,22 +10,26 @@ namespace JottaRabbit.API.Controllers
     {
         private readonly IProductService productService;
         private readonly IRabitMQProducer _rabitMQProducer;
+
         public ProductController(IProductService _productService, IRabitMQProducer rabitMQProducer)
         {
             productService = _productService;
             _rabitMQProducer = rabitMQProducer;
         }
+
         [HttpGet("productlist")]
         public IEnumerable<Product> ProductList()
         {
             var productList = productService.GetProductList();
             return productList;
         }
+
         [HttpGet("getproductbyid")]
         public Product GetProductById(int Id)
         {
             return productService.GetProductById(Id);
         }
+
         [HttpPost("addproduct")]
         public Product AddProduct(Product product)
         {
@@ -34,13 +38,15 @@ namespace JottaRabbit.API.Controllers
             _rabitMQProducer.SendProductMessage(productData);
             return productData;
         }
+
         [HttpPut("updateproduct")]
         public Product UpdateProduct(Product product)
         {
-            Product updatedProduct =  productService.UpdateProduct(product);
+            Product updatedProduct = productService.UpdateProduct(product);
             _rabitMQProducer.SendProductMessage(updatedProduct);
             return updatedProduct;
         }
+
         [HttpDelete("deleteproduct")]
         public bool DeleteProduct(int Id)
         {
