@@ -12,7 +12,7 @@ var connection = factory.CreateConnection();
 using
 var channel = connection.CreateModel();
 //declare the queue after mentioning name and a few property related to that
-channel.QueueDeclare("product", exclusive: false);
+channel.QueueDeclare("product", exclusive: false,durable:true,autoDelete:false);
 //Set Event object which listen message from chanel which is sent by producer
 var consumer = new EventingBasicConsumer(channel);
 consumer.Received += (model, eventArgs) => {
@@ -21,5 +21,5 @@ consumer.Received += (model, eventArgs) => {
     Console.WriteLine($"Product message received: {message}");
 };
 //read the message
-channel.BasicConsume(queue: "product", autoAck: true, consumer: consumer);
+channel.BasicConsume(queue: "product", autoAck: false, consumer: consumer);
 Console.ReadKey();
