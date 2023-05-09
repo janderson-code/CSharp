@@ -20,7 +20,7 @@ namespace JottaRabbit.API.RabbitMQ
             using var channel = connection.CreateModel();
 
             //declare the queue after mentioning name and a few property related to that
-            channel.QueueDeclare("product", durable: true, exclusive: false, autoDelete: false);
+            channel.QueueDeclare("product", durable: false, exclusive: false, autoDelete: true);
 
             //Serialize the message
             var json = JsonConvert.SerializeObject(message);
