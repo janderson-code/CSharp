@@ -1,11 +1,17 @@
+
+global using System;
+global using System.Collections.Generic;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using  MassTransit;
+
 namespace GettingStarted;
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Contracts;
-using MassTransit;
+
 using Microsoft.Extensions.Hosting;
+
+
 
 public class Worker : BackgroundService
 {

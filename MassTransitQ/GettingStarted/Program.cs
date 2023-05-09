@@ -2,7 +2,6 @@ using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace GettingStarted
 {
