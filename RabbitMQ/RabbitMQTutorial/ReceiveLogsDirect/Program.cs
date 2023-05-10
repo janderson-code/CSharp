@@ -1,8 +1,8 @@
-﻿
+﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+
 /// Subscriber or Consumer
 using System.Text;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 
 var factory = new ConnectionFactory { HostName = "localhost" };
 
@@ -14,7 +14,7 @@ string exchangeName = "direct_logs";
 channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Direct);
 
 // declare a server-named queue
-var queueName = channel.QueueDeclare().QueueName;
+var queueName = channel.QueueDeclare(durable:true,autoDelete:false,exclusive:false,queue:"FilaDireta");
 
 if (args.Length < 1)
 {
@@ -44,7 +44,7 @@ consumer.Received += (model, ea) =>
     Console.WriteLine($" [x] Received '{routingKey}':'{message}'");
 };
 channel.BasicConsume(queue: queueName,
-                     autoAck: false,
+                     autoAck: true,
                      consumer: consumer);
 
 Console.WriteLine(" Press [enter] to exit.");

@@ -1,7 +1,7 @@
-﻿
+﻿using RabbitMQ.Client;
+
 /// Publisher or Producer
 using System.Text;
-using RabbitMQ.Client;
 
 var factory = new ConnectionFactory { HostName = "localhost" };
 using var connection = factory.CreateConnection();
@@ -19,6 +19,7 @@ channel.BasicPublish(exchange: "direct_logs",
                      routingKey: severity,
                      basicProperties: null,
                      body: body);
+
 Console.WriteLine($" [x] Sent '{severity}':'{message}'");
 
 Console.WriteLine(" Press [enter] to exit.");
