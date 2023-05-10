@@ -9,7 +9,9 @@ var factory = new ConnectionFactory { HostName = "localhost" };
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
 
-channel.ExchangeDeclare(exchange: "direct_logs", type: ExchangeType.Direct);
+string exchangeName = "direct_logs";
+
+channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Direct);
 
 // declare a server-named queue
 var queueName = channel.QueueDeclare().QueueName;
@@ -27,7 +29,7 @@ if (args.Length < 1)
 foreach (var severity in args)
 {
     channel.QueueBind(queue: queueName,
-                      exchange: "direct_logs",
+                      exchange: exchangeName,
                       routingKey: severity);
 }
 
