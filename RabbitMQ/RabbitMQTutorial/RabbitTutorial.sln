@@ -31,9 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EmitLog", "EmitLog", "{CB94
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReceivedLogs", "ReceivedLogs", "{EE24EB58-6573-4410-995A-59EBFA5B04D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmitLog", "src\03 - Publisher And Subscriber\EmitLog\EmitLog\EmitLog.csproj", "{8090A8B1-C67F-42FF-9D54-BDA3AE7D04C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmitLog", "src\03 - Publisher And Subscriber\EmitLog\EmitLog\EmitLog.csproj", "{8090A8B1-C67F-42FF-9D54-BDA3AE7D04C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiveLogs", "src\03 - Publisher And Subscriber\ReceiveLogs\ReceiveLogs.csproj", "{6CE2C8C7-1C13-48DA-96E5-CE811C3DD2EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiveLogs", "src\03 - Publisher And Subscriber\ReceiveLogs\ReceiveLogs.csproj", "{6CE2C8C7-1C13-48DA-96E5-CE811C3DD2EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula 04 - Routing", "Aula 04 - Routing", "{42BEEFB6-A12C-490F-A8A0-C03ABBD869D2}"
 EndProject
@@ -43,13 +43,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReceiveLogsDirect", "Receiv
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula 05  - Topics", "Aula 05  - Topics", "{2F52738A-C40E-43B7-BD3F-A06F20EF34DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmitLogTopic", "src\05 - Topics\EmitLogTopic\EmitLogTopic\EmitLogTopic.csproj", "{12FEEE38-3CFF-49C9-9D6C-2284F168C4AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmitLogTopic", "src\05 - Topics\EmitLogTopic\EmitLogTopic\EmitLogTopic.csproj", "{12FEEE38-3CFF-49C9-9D6C-2284F168C4AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmitLogDirect", "src\04 - Routing\EmitLogDirect\EmitLogDirect.csproj", "{D085723C-02E1-4C9A-8A51-C4B82D6A891D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiveLogsDirect", "src\04 - Routing\ReceiveLogsDirect\ReceiveLogsDirect.csproj", "{32814DCC-568D-4A45-8212-C1E87C41884A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiveLogsTopic", "src\05 - Topics\ReceiveLogsTopic\ReceiveLogsTopic.csproj", "{E1E08F62-310D-45FC-A056-8D985DBA27EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiveLogsTopic", "src\05 - Topics\ReceiveLogsTopic\ReceiveLogsTopic.csproj", "{E1E08F62-310D-45FC-A056-8D985DBA27EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aula 06 - RPC", "Aula 06 - RPC", "{C841115F-73F5-45FA-9564-F2044A71AE37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPCClient", "src\06 - RPC\RPCClient\RPCClient.csproj", "{DB5415FB-4B1A-48E9-AC51-37297901068C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPCServer", "src\06 - RPC\RPCServer\RPCServer.csproj", "{432CE7A8-29D6-4161-8875-3E82C70FC1EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +103,14 @@ Global
 		{E1E08F62-310D-45FC-A056-8D985DBA27EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1E08F62-310D-45FC-A056-8D985DBA27EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1E08F62-310D-45FC-A056-8D985DBA27EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5415FB-4B1A-48E9-AC51-37297901068C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5415FB-4B1A-48E9-AC51-37297901068C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5415FB-4B1A-48E9-AC51-37297901068C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5415FB-4B1A-48E9-AC51-37297901068C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432CE7A8-29D6-4161-8875-3E82C70FC1EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432CE7A8-29D6-4161-8875-3E82C70FC1EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432CE7A8-29D6-4161-8875-3E82C70FC1EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432CE7A8-29D6-4161-8875-3E82C70FC1EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +139,9 @@ Global
 		{D085723C-02E1-4C9A-8A51-C4B82D6A891D} = {59C9604C-3480-4F36-9390-A3F5286BAACF}
 		{32814DCC-568D-4A45-8212-C1E87C41884A} = {0831DA63-FCF5-42FE-AE64-64DF2FD3D967}
 		{E1E08F62-310D-45FC-A056-8D985DBA27EC} = {2F52738A-C40E-43B7-BD3F-A06F20EF34DE}
+		{C841115F-73F5-45FA-9564-F2044A71AE37} = {E2792D7B-73D1-4FA0-9AC2-38FAB6D9C5DD}
+		{DB5415FB-4B1A-48E9-AC51-37297901068C} = {C841115F-73F5-45FA-9564-F2044A71AE37}
+		{432CE7A8-29D6-4161-8875-3E82C70FC1EC} = {C841115F-73F5-45FA-9564-F2044A71AE37}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {423F1B8F-D9FF-4563-A9BD-0ACCC130754E}
