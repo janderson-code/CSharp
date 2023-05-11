@@ -20,7 +20,7 @@ public class RpcClient : IDisposable
         channel = connection.CreateModel();
 
         // Declara uma fila com nome do servidor
-        replyQueueName = channel.QueueDeclare(queue:"rpc_ReplyQueue").QueueName;
+        replyQueueName = channel.QueueDeclare(queue: "rpc_ReplyQueue").QueueName;
 
         // Cria um consumidor para receber mensagens da fila de resposta
         var consumer = new EventingBasicConsumer(channel);
