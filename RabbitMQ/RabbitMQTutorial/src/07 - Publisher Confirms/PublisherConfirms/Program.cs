@@ -1,7 +1,7 @@
-﻿using System.Collections.Concurrent;
+﻿using RabbitMQ.Client;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Text;
-using RabbitMQ.Client;
 
 const int MESSAGE_COUNT = 50_000;
 
@@ -27,7 +27,6 @@ static void PublishMessagesIndividually()
     channel.ConfirmSelect();
 
     // Início da contagem do tempo
-
 
     var stopwatch = Stopwatch.StartNew();
 
