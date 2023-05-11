@@ -23,7 +23,7 @@ static void PublishMessagesIndividually()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila com nome gerado pelo servidor
-    var queueName = channel.QueueDeclare(queue:"Publisher_QueueIndividually").QueueName;
+    var queueName = channel.QueueDeclare(queue: "Publisher_QueueIndividually").QueueName;
     channel.ConfirmSelect();
 
     // Início da contagem do tempo
@@ -52,7 +52,7 @@ static void PublishMessagesInBatch()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila com nome gerado pelo servidor
-    var queueName = channel.QueueDeclare(queue:"Publisher_Queue_MessagesInBatch").QueueName;
+    var queueName = channel.QueueDeclare(queue: "Publisher_Queue_MessagesInBatch").QueueName;
 
     channel.ConfirmSelect();
 
@@ -94,7 +94,7 @@ static async Task HandlePublishConfirmsAsynchronously()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila nomeada pelo servidor
-    var queueName = channel.QueueDeclare(queue:"HandlePublishConfirmQueue").QueueName;
+    var queueName = channel.QueueDeclare(queue: "HandlePublishConfirmQueue").QueueName;
     channel.ConfirmSelect();
 
     // Dicionário para acompanhar as confirmações pendentes
