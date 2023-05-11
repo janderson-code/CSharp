@@ -14,7 +14,7 @@ string exchangeName = "direct_logs";
 channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Direct);
 
 // declare a server-named queue
-var queueName = channel.QueueDeclare(durable:true,autoDelete:false,exclusive:false,queue:"FilaDireta");
+var queueName = channel.QueueDeclare(durable: true, autoDelete: false, exclusive: false, queue: "FilaDireta");
 
 if (args.Length < 1)
 {

@@ -23,7 +23,7 @@ static void PublishMessagesIndividually()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila com nome gerado pelo servidor
-    var queueName = channel.QueueDeclare().QueueName;
+    var queueName = channel.QueueDeclare(queue:"Publisher_QueueIndividually").QueueName;
     channel.ConfirmSelect();
 
     // Início da contagem do tempo
@@ -41,7 +41,7 @@ static void PublishMessagesIndividually()
     // Fim da contagem do tempo
     stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages individually in {stopwatch.Elapsed.TotalSeconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages individually in {stopwatch.Elapsed.TotalSeconds:N0} seconds");
 }
 
 // Publicação de mensagens em lote
@@ -52,7 +52,7 @@ static void PublishMessagesInBatch()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila com nome gerado pelo servidor
-    var queueName = channel.QueueDeclare().QueueName;
+    var queueName = channel.QueueDeclare(queue:"Publisher_Queue_MessagesInBatch").QueueName;
 
     channel.ConfirmSelect();
 
@@ -84,7 +84,7 @@ static void PublishMessagesInBatch()
     // Fim da contagem do tempo
     stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages in batch in {stopwatch.Elapsed.TotalSeconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages in batch in {stopwatch.Elapsed.TotalSeconds:N0} seconds");
 }
 
 static async Task HandlePublishConfirmsAsynchronously()
@@ -94,7 +94,7 @@ static async Task HandlePublishConfirmsAsynchronously()
     using var channel = connection.CreateModel();
 
     // Declaração de uma fila nomeada pelo servidor
-    var queueName = channel.QueueDeclare().QueueName;
+    var queueName = channel.QueueDeclare(queue:"HandlePublishConfirmQueue").QueueName;
     channel.ConfirmSelect();
 
     // Dicionário para acompanhar as confirmações pendentes
@@ -143,7 +143,7 @@ static async Task HandlePublishConfirmsAsynchronously()
     // Fim da contagem do tempo
     stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages and handled confirm asynchronously {stopwatch.Elapsed.TotalSeconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages and handled confirm asynchronously {stopwatch.Elapsed.TotalSeconds:N0} seconds");
 }
 
 // Função para aguardar até que uma determinada condição seja satisfeita ou o tempo limite seja atingido
