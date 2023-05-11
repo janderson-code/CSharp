@@ -27,7 +27,9 @@ static void PublishMessagesIndividually()
     channel.ConfirmSelect();
 
     // Início da contagem do tempo
-    var startTime = Stopwatch.GetTimestamp();
+
+
+    var stopwatch = Stopwatch.StartNew();
 
     // Publicação de cada mensagem individualmente
     for (int i = 0; i < MESSAGE_COUNT; i++)
@@ -38,9 +40,9 @@ static void PublishMessagesIndividually()
     }
 
     // Fim da contagem do tempo
-    var endTime = Stopwatch.GetTimestamp();
+    stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages individually in {Stopwatch.GetElapsedTime(startTime, endTime).TotalMilliseconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages individually in {stopwatch.Elapsed.TotalSeconds:N0} ms");
 }
 
 // Publicação de mensagens em lote
@@ -52,13 +54,14 @@ static void PublishMessagesInBatch()
 
     // Declaração de uma fila com nome gerado pelo servidor
     var queueName = channel.QueueDeclare().QueueName;
+
     channel.ConfirmSelect();
 
     var batchSize = 100;
     var outstandingMessageCount = 0;
 
     // Início da contagem do tempo
-    var startTime = Stopwatch.GetTimestamp();
+    var stopwatch = Stopwatch.StartNew();
 
     // Publicação de mensagens em lote
     for (int i = 0; i < MESSAGE_COUNT; i++)
@@ -80,9 +83,9 @@ static void PublishMessagesInBatch()
         channel.WaitForConfirmsOrDie(TimeSpan.FromSeconds(5));
 
     // Fim da contagem do tempo
-    var endTime = Stopwatch.GetTimestamp();
+    stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages in batch in {Stopwatch.GetElapsedTime(startTime, endTime).TotalMilliseconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages in batch in {stopwatch.Elapsed.TotalSeconds:N0} ms");
 }
 
 static async Task HandlePublishConfirmsAsynchronously()
@@ -124,7 +127,7 @@ static async Task HandlePublishConfirmsAsynchronously()
     };
 
     // Início da contagem do tempo
-    var startTime = Stopwatch.GetTimestamp();
+    var stopwatch = Stopwatch.StartNew();
 
     // Loop para publicar mensagens e acompanhar as confirmações de forma assíncrona
     for (int i = 0; i < MESSAGE_COUNT; i++)
@@ -139,9 +142,9 @@ static async Task HandlePublishConfirmsAsynchronously()
         throw new Exception("All messages could not be confirmed in 60 seconds");
 
     // Fim da contagem do tempo
-    var endTime = Stopwatch.GetTimestamp();
+    stopwatch.Stop();
 
-    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages and handled confirm asynchronously {Stopwatch.GetElapsedTime(startTime, endTime).TotalMilliseconds:N0} ms");
+    Console.WriteLine($"Published {MESSAGE_COUNT:N0} messages and handled confirm asynchronously {stopwatch.Elapsed.TotalSeconds:N0} ms");
 }
 
 // Função para aguardar até que uma determinada condição seja satisfeita ou o tempo limite seja atingido
