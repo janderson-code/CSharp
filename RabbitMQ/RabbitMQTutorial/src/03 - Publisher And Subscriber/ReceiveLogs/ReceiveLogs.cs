@@ -30,3 +30,29 @@ channel.BasicConsume(queue: queueName,
 
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();
+
+public class teste01
+{
+    public void teste()
+    {
+        var factory = new ConnectionFactory { HostName = "" };
+        using var connection = factory.CreateConnection();
+        using var channel = connection.CreateModel();
+
+        channel.ExchangeDeclare(exchange: "", type: ExchangeType.Fanout);
+
+        var queueName = channel.QueueDeclare("name");
+        channel.QueueBind(queueName, routingKey: String.Empty, exchange: "logs");
+
+        var consumer = new EventingBasicConsumer(channel);
+
+        consumer.Received += (model, ea) =>
+        {
+            byte[] body = ea.Body.ToArray();
+
+            var message = Encoding.UTF8.GetString(body);
+        };
+
+        channel.BasicConsume(queueName, autoAck: true, consumer: consumer);
+    }
+}

@@ -73,5 +73,6 @@ static int Fib(int n)
         return n;
     }
 
-    return Fib(n - 1) + Fib(n - 2);
+    var fib = Fib(n - 1) + Fib(n - 2);
+    return fib;
 }

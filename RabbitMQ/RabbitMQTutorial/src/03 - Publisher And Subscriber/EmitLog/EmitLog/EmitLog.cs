@@ -22,3 +22,19 @@ static string GetMessage(string[] args)
 {
     return ((args.Length > 0) ? string.Join(" ", args) : "info: Hello World!");
 }
+
+public class Teste
+{
+    public void teste()
+    {
+        var factory = new ConnectionFactory { HostName = "" };
+        using var connection = factory.CreateConnection();
+        using var channel = connection.CreateModel();
+        channel.ExchangeDeclare(exchange: "", type: ExchangeType.Fanout);
+        var message = "messagem";
+        var body = Encoding.UTF8.GetBytes(message);
+
+        channel.BasicPublish(exchange: "", routingKey: String.Empty, basicProperties: null);
+        Console.WriteLine($"");
+    }
+}
