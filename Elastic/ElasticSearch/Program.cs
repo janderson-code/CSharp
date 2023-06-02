@@ -1,3 +1,4 @@
+using Elastic.Apm.NetCoreAll;
 using Serilog;
 using Serilog.Exceptions;
 using Serilog.Sinks.Elasticsearch;
@@ -53,6 +54,8 @@ void ConfigureLogging()
         .Enrich.WithProperty("Environment", environment)
         .ReadFrom.Configuration(configuration)
         .CreateLogger();
+
+    app.UseAllElasticApm(configuration);
 }
 
 ElasticsearchSinkOptions ConfigureElasticSink(IConfigurationRoot configuration, string environment)
