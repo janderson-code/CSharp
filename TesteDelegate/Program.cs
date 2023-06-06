@@ -7,7 +7,7 @@ delegate List<int> MeuDelegate(int x, int y);
 
 // Example 2
 public delegate int del (int x);
-public delegate void Deltexto(string texto);
+public  delegate void Deltexto(string texto);
 
 
 public class Program
@@ -23,10 +23,11 @@ public class Program
 
         foreach (int resultado in resultados)
         {
-            Console.WriteLine(resultado);
+            Console.WriteLine($"Resultado => {resultado}");
         }
 
         List<Delegate> delegates = meuDelegate.GetInvocationList().ToList();
+        
         foreach (Delegate del in delegates)
         {
             MeuDelegate metodo = (MeuDelegate) del;
@@ -41,6 +42,19 @@ public class Program
 		Console.WriteLine(handle(3));
 		Deltexto handleTexto = textoTeste;
 		MetodoCallback(1,2,handleTexto);
+
+        System.Console.WriteLine("///App");
+        ChatApp chatApp = new ChatApp();
+
+        Usuario usuario1 = new Usuario("Alice");
+        Usuario usuario2 = new Usuario("Bob");
+
+        // Registrar os callbacks dos usuários para receber mensagens
+        chatApp.NovaMensagem += usuario1.ReceberMensagem;
+        chatApp.NovaMensagem += usuario2.ReceberMensagem;
+
+        chatApp.EnviarMensagem("Carol", "Olá, pessoal!");
+        chatApp.EnviarMensagem("janderson", "Olá, pessoal!");
     }
 
     static List<int> Soma(int x, int y)
@@ -83,4 +97,39 @@ public class Program
 	   callback("O calculo é"+ (num + num2).ToString());
 	}
 }
+}
+
+
+// Delegate para notificar os usuários sobre uma nova mensagem
+delegate void NovaMensagemDelegate(string remetente, string mensagem);
+
+class ChatApp
+{
+    public event NovaMensagemDelegate NovaMensagem;
+
+    public void EnviarMensagem(string remetente, string mensagem)
+    {
+        // Lógica para enviar a mensagem
+
+        // Disparar o evento de nova mensagem
+        if (NovaMensagem != null)
+        {
+            NovaMensagem(remetente, mensagem);
+        }
+    }
+}
+
+class Usuario
+{
+    public string Nome { get; }
+
+    public Usuario(string nome)
+    {
+        Nome = nome;
+    }
+
+    public void ReceberMensagem(string remetente, string mensagem)
+    {
+        Console.WriteLine("Nova mensagem de {0}: {1}", remetente, mensagem);
+    }
 }
