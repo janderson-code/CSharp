@@ -1,11 +1,10 @@
-using System.Configuration;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProjetoAnime.Identidade.API.Data;
 using ProjetoAnime.Identidade.API.Extensions;
+using System.Text;
 
 namespace ProjetoAnime.Identidade.API.Configurations
 {
@@ -24,10 +23,10 @@ namespace ProjetoAnime.Identidade.API.Configurations
             services
                 .AddDefaultIdentity<IdentityUser>() // Adicionando o pacote de usuário
                 .AddRoles<IdentityRole>() // Adicionando suporte as roles
-                .AddErrorDescriber<IdentityMensagensPortugues>() 
+                .AddErrorDescriber<IdentityMensagensPortugues>()
                 .AddEntityFrameworkStores<AppDbContext>() // Contexto que usaremos para criar os bancos do Identity
                 .AddDefaultTokenProviders(); // Tokens gerados para necessidade de resetar uma senha e etc. é criado default
-            
+
             var appSettingsSection = configuration.GetSection("AppSettings"); // Vá até o arquivo do appsettings e pegue a seção/nó  "AppSettings"
             services.Configure<AppSettings>(appSettingsSection); // Aqui configuramos para popular a classe conforme o dados da seção/nó
 
@@ -39,7 +38,7 @@ namespace ProjetoAnime.Identidade.API.Configurations
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(bearerOptions => 
+                .AddJwtBearer(bearerOptions =>
                 {
                     bearerOptions.RequireHttpsMetadata = true;
                     bearerOptions.SaveToken = true;
@@ -47,11 +46,10 @@ namespace ProjetoAnime.Identidade.API.Configurations
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(key), // Usando a chave
-                        ValidateIssuer = true,// 
+                        ValidateIssuer = true,//
                         ValidateAudience = true,
-                        ValidAudience = appSettings.ValidoEm ,// Inserido o valor da Audiencia
-                        ValidIssuer = appSettings .Emissor // Inserido o valor do Emissor 
-
+                        ValidAudience = appSettings.ValidoEm,// Inserido o valor da Audiencia
+                        ValidIssuer = appSettings.Emissor // Inserido o valor do Emissor
                     };
                 });
             return services;
