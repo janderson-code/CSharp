@@ -1,32 +1,63 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Identity;
+using ProjetoAnime.Identidade.API.Models;
 
 namespace ProjetoAnime.Identidade.API.Controllers
 {
-    [Route("[controller]")]
+    [ApiController] // Com isso o Swagger entende que é doc de API pra trafegar JSON em vez de Form
+    [Route("api/identidade")]
     public class AuthController : Controller
     {
-        private readonly ILogger<AuthController> _logger;
+        private readonly AuthenticationService _authenticationService;
+        private readonly SignInManager<IdentityUser> _signInManager; //Gerencia login 
+        private readonly UserManager<IdentityUser> _userManager; // Gerencia usuário
 
-        public AuthController(ILogger<AuthController> logger)
+        public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signManager)
         {
-            _logger = logger;
+            _signInManager = signManager;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        [HttpPost("nova-conta")]
+        public async Task<ActionResult> Registrar(UsuarioRegistroViewModel usuarioRegistro)
         {
-            return View();
+            if (!ModelState.IsValid) return BadRequest();
+
+            var user = new IdentityUser // Criando objeto que será o usuário do Identity
+            {
+                UserName = usuarioRegistro.Email,
+                Email = usuarioRegistro.Email,
+                EmailConfirmed = true
+            };
+
+            // passe o usuário e a senha 
+            var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
+
+            if (result.Succeeded)
+            {
+                _signInManager.SignInAsync(user, false).Wait();
+                return Ok();
+            }
+
+            return BadRequest();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost("autenticar")]
+        public async Task<ActionResult> Login(UsuarioLoginViewModel usuarioLogin)
         {
-            return View("Error!");
+            if (!ModelState.IsValid) return BadRequest();
+
+            var result = await _signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha,
+                false /*request persistente*/, true /*bloquear usuário após tentativas invalidas*/);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+
+                
+            }
+            return BadRequest();
         }
     }
 }
