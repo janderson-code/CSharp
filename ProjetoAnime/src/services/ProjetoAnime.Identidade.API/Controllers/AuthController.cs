@@ -114,7 +114,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
                 Issuer = _appSettings.Emissor,
                 Audience = _appSettings.ValidoEm,
                 Subject = identityClaims,
-                Expires = DateTime.UtcNow.AddHours(Convert.ToDouble( _appSettings.ExpiracaoHoras)),
+                Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials =
                     new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             });
@@ -126,7 +126,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
             return new UsuarioRespostaLogin
             {
                 AccessToken = encodedToken,
-                ExpiresIn = TimeSpan.FromHours(Convert.ToDouble( _appSettings.ExpiracaoHoras)).TotalSeconds,
+                ExpiresIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds,
                 UsuarioToken = new UsuarioToken
                 {
                     Id = user.Id,
