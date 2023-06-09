@@ -5,11 +5,9 @@ using ProjetoAnime.Identidade.API.Models;
 
 namespace ProjetoAnime.Identidade.API.Controllers
 {
-    [ApiController] // Com isso o Swagger entende que é doc de API pra trafegar JSON em vez de Form
     [Route("api/identidade")]
-    public class AuthController : Controller
+    public class AuthController : MainController
     {
-        private readonly AuthenticationService _authenticationService;
         private readonly SignInManager<IdentityUser> _signInManager; //Gerencia login 
         private readonly UserManager<IdentityUser> _userManager; // Gerencia usuário
 
@@ -54,8 +52,6 @@ namespace ProjetoAnime.Identidade.API.Controllers
             if (result.Succeeded)
             {
                 return Ok();
-
-                
             }
             return BadRequest();
         }
