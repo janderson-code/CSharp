@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using ProjetoAnime.Core.API.Controllers;
 using ProjetoAnime.Identidade.API.Extensions;
 using ProjetoAnime.Identidade.API.Models;
 using ProjetoAnime.Identidade.API.Models.NerdStore.Enterprise.Identidade.API.Models;
@@ -40,11 +41,11 @@ namespace ProjetoAnime.Identidade.API.Controllers
                 EmailConfirmed = true
             };
             
-            var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
+            var result =  _userManager.CreateAsync(user, usuarioRegistro.Senha).Result;
 
             if (result.Succeeded)
             {
-                return CustomResponse(GerarJwt(usuarioRegistro.Email));
+                return CustomResponse(GerarJwt(usuarioRegistro.Email).Result);
             }
 
             // Adicionando erros na criação do usuário caso haja
@@ -66,7 +67,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
 
             if (result.Succeeded)
             {
-                return CustomResponse(GerarJwt(usuarioLogin.Email)); // Retornando o login com o token
+                return CustomResponse(GerarJwt(usuarioLogin.Email).Result); // Retornando o login com o token
             }
 
             if (result.IsLockedOut)
@@ -81,9 +82,9 @@ namespace ProjetoAnime.Identidade.API.Controllers
 
         private async Task<UsuarioRespostaLogin> GerarJwt(string email)
         {
-            var user = await _userManager.FindByEmailAsync(email); // Obter usuário pelo email
-            var claims = await _userManager.GetClaimsAsync(user); //  Obter as Claims deste usuário 
-            var userRoles = await _userManager.GetRolesAsync(user); // Obter as Roles deste Usuário
+            var user =  _userManager.FindByEmailAsync(email).Result; // Obter usuário pelo email
+            var claims =  _userManager.GetClaimsAsync(user).Result; //  Obter as Claims deste usuário 
+            var userRoles =  _userManager.GetRolesAsync(user).Result; // Obter as Roles deste Usuário
 
             //Adicionando mais claims do Tipo JWT na lista de Claims do usuário 
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
@@ -105,7 +106,6 @@ namespace ProjetoAnime.Identidade.API.Controllers
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(claims);
 
-
             //Gerando o manipulador do Token						
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -126,7 +126,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
             return new UsuarioRespostaLogin
             {
                 AccessToken = encodedToken,
-                ExpiresIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds,
+                ExpiresIn = TimeSpan.FromHours(2).TotalSeconds,
                 UsuarioToken = new UsuarioToken
                 {
                     Id = user.Id,

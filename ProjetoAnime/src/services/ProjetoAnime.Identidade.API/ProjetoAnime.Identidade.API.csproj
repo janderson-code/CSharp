@@ -26,4 +26,12 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\MainController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building-blocks\ProjetoAnime.Core.API\ProjetoAnime.Core.API.csproj" />
+  </ItemGroup>
+
 </Project>
