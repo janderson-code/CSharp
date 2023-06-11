@@ -13,9 +13,9 @@ public class AnimeController : MainController
         _animeKitsuService = animeKitsuService;
     }
     // GET
-    [HttpGet("obter-anime-apelido")]
-    public IActionResult Index(string apelido)
+    [HttpGet("obter-anime-nome")]
+    public IActionResult Index(string nome)
     {
-        return Ok(_animeKitsuService.ObterAnimeApelido(apelido));
+        return Ok(_animeKitsuService.ObterAnimeNome(nome));
     }
 }

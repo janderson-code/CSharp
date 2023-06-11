@@ -18,7 +18,8 @@ public abstract class Service
 
     protected async Task<T> DeserializarObjetoResponse<T>(HttpResponseMessage responseMessage)
     {
-        return JsonConvert.DeserializeObject<T>(responseMessage.Content.ReadAsStringAsync().Result);
+        string responseContent = await responseMessage.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<T>(responseContent);
     }
 
     protected bool TratarErrosResponse(HttpResponseMessage response)

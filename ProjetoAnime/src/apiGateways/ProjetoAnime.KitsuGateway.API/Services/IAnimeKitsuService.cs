@@ -1,6 +1,8 @@
+using ProjetoAnime.KitsuGateway.API.Models.Anime;
+
 namespace ProjetoAnime.KitsuGateway.API.Services;
 
 public interface IAnimeKitsuService
 {
-    string ObterAnimeApelido(string apelido);
+    Models.Anime.Anime ObterAnimeNome(string apelido);
 }
