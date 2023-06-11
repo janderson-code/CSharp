@@ -8,6 +8,7 @@ public static class DependencyInjection
     public static void RegisterServices(this IServiceCollection services)
     {
         services.AddScoped<IAnimeKitsuService, AnimeKitsuService>();
+        services.AddScoped<IMangaKitsuService, MangaKitsuService>();
         services.AddHttpClient<IHttpService, HttpService>();
     }
 }

@@ -59,7 +59,7 @@ public class AnimeAttributes
     public string Description { get; set; }
 
     [JsonProperty("coverImageTopOffset")]
-    public int CoverImageTopOffset { get; set; }
+    public int? CoverImageTopOffset { get; set; }
 
     [JsonProperty("titles")]
     public AnimeTitles Titles { get; set; }
@@ -77,10 +77,10 @@ public class AnimeAttributes
     public Dictionary<string, string> RatingFrequencies { get; set; }
 
     [JsonProperty("userCount")]
-    public int UserCount { get; set; }
+    public int? UserCount { get; set; }
 
     [JsonProperty("favoritesCount")]
-    public int FavoritesCount { get; set; }
+    public int? FavoritesCount { get; set; }
 
     [JsonProperty("startDate")]
     public string StartDate { get; set; }
@@ -92,10 +92,10 @@ public class AnimeAttributes
     public string NextRelease { get; set; }
 
     [JsonProperty("popularityRank")]
-    public int PopularityRank { get; set; }
+    public int? PopularityRank { get; set; }
 
     [JsonProperty("ratingRank")]
-    public int RatingRank { get; set; }
+    public int? RatingRank { get; set; }
 
     [JsonProperty("ageRating")]
     public string AgeRating { get; set; }
@@ -119,10 +119,10 @@ public class AnimeAttributes
     public ImageData CoverImage { get; set; }
 
     [JsonProperty("episodeCount")]
-    public int EpisodeCount { get; set; }
+    public int? EpisodeCount { get; set; }
 
     [JsonProperty("episodeLength")]
-    public int EpisodeLength { get; set; }
+    public int? EpisodeLength { get; set; }
 
     [JsonProperty("totalLength")]
     public double TotalLength { get; set; }
@@ -194,10 +194,10 @@ public class ImageDimensions
 public class Dimension
 {
     [JsonProperty("width")]
-    public int Width { get; set; }
+    public int? Width { get; set; }
 
     [JsonProperty("height")]
-    public int Height { get; set; }
+    public int? Height { get; set; }
 }
 
 public class AnimeRelationships
@@ -260,5 +260,5 @@ public class RelationshipLinks
 public class Metadata
 {
     [JsonProperty("count")]
-    public int Count { get; set; }
+    public int? Count { get; set; }
 }

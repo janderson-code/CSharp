@@ -1,14 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoAnime.Core.API.Controllers;
+using ProjetoAnime.KitsuGateway.API.Services;
 
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
 public class MangaController : MainController
 {
-    // GET
-    [HttpGet("obter-manga-apelido")]
-    public IActionResult Index()
+    private readonly IMangaKitsuService _mangaKitsuService;
+
+    public MangaController(IMangaKitsuService animeKitsuService)
     {
-        return Ok();
+        _mangaKitsuService = animeKitsuService;
+    }
+
+    // GET
+    [HttpGet("obter-manga-nome")]
+    public IActionResult Index(string nome)
+    {
+        return Ok(_mangaKitsuService.obterMangaNome(nome));
     }
 }
