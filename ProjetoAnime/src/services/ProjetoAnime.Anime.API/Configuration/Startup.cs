@@ -21,8 +21,8 @@ public class Startup : IStartup
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
-
         app.MapControllers();
+        app.AddConfigureMigrate();
     }
 
     public void ConfigureService(IServiceCollection services)
@@ -31,5 +31,6 @@ public class Startup : IStartup
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        services.AddDbContextConfig(Configuration);
     }
 }

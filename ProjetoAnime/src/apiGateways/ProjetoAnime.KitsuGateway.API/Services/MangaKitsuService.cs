@@ -6,7 +6,7 @@ namespace ProjetoAnime.KitsuGateway.API.Services;
 public class MangaKitsuService : Service,IMangaKitsuService
 {
     private readonly IHttpService _httpService;
-
+    
     public MangaKitsuService(IHttpService httpService)
     {
         _httpService = httpService;
