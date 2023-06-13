@@ -4,11 +4,11 @@ using ProjetoAnime.KitsuGateway.API.Services;
 
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
-public class MangaController : MainController
+public class MangaKitsuController : MainController
 {
     private readonly IMangaKitsuService _mangaKitsuService;
 
-    public MangaController(IMangaKitsuService animeKitsuService)
+    public MangaKitsuController(IMangaKitsuService animeKitsuService)
     {
         _mangaKitsuService = animeKitsuService;
     }

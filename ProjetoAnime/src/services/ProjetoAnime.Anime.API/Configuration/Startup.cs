@@ -14,8 +14,7 @@ public class Startup : IStartup
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerConfiguration();
         }
 
         app.UseHttpsRedirection();
@@ -28,9 +27,9 @@ public class Startup : IStartup
     public void ConfigureService(IServiceCollection services)
     {
         services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        services.DIConfigure();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerConfiguration();
         services.AddDbContextConfig(Configuration);
     }
 }

@@ -4,5 +4,5 @@ namespace ProjetoAnime.KitsuGateway.API.Services;
 
 public interface IAnimeKitsuService
 {
-    Models.Anime.Anime ObterAnimeNome(string apelido);
+    Models.Anime.AnimeKitsuResponse ObterAnimeNome(string apelido);
 }

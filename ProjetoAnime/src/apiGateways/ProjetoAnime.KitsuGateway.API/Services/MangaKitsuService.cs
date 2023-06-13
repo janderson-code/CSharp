@@ -12,12 +12,12 @@ public class MangaKitsuService : Service,IMangaKitsuService
         _httpService = httpService;
     }
 
-    public Manga obterMangaNome(string nome)
+    public MangaKitsuResponse obterMangaNome(string nome)
     {
         string nomeManga = nome.ToLower().Replace(" ", "-");
         var response = _httpService.Get($"https://kitsu.io/api/edge/manga?filter[slug]={nomeManga}").Result;
         TratarErrosResponse(response);
-        var content = DeserializarObjetoResponse<Manga>(response).Result;
+        var content = DeserializarObjetoResponse<MangaKitsuResponse>(response).Result;
         return content;
     }
 }
