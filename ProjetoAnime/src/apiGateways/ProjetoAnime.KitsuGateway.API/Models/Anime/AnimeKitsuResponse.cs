@@ -1,19 +1,20 @@
 using Newtonsoft.Json;
 
-namespace ProjetoAnime.KitsuGateway.API.Models.Manga;
-public class Manga
+namespace ProjetoAnime.KitsuGateway.API.Models.Anime;
+
+public class AnimeKitsuResponse
 {
     [JsonProperty("data")]
-    public List<MangaData> Data { get; set; }
+    public List<AnimeData> Data { get; set; }
 
     [JsonProperty("meta")]
-    public Meta Meta { get; set; }
+    public Metadata Meta { get; set; }
 
     [JsonProperty("links")]
     public Links Links { get; set; }
 }
 
-public class MangaData
+public class AnimeData
 {
     [JsonProperty("id")]
     public string Id { get; set; }
@@ -25,10 +26,10 @@ public class MangaData
     public Links Links { get; set; }
 
     [JsonProperty("attributes")]
-    public MangaAttributes Attributes { get; set; }
+    public AnimeAttributes Attributes { get; set; }
 
     [JsonProperty("relationships")]
-    public Relationships Relationships { get; set; }
+    public AnimeRelationships Relationships { get; set; }
 }
 
 public class Links
@@ -40,13 +41,13 @@ public class Links
     public string Related { get; set; }
 }
 
-public class MangaAttributes
+public class AnimeAttributes
 {
     [JsonProperty("createdAt")]
-    public DateTime CreatedAt { get; set; }
+    public string CreatedAt { get; set; }
 
     [JsonProperty("updatedAt")]
-    public DateTime UpdatedAt { get; set; }
+    public string UpdatedAt { get; set; }
 
     [JsonProperty("slug")]
     public string Slug { get; set; }
@@ -58,10 +59,10 @@ public class MangaAttributes
     public string Description { get; set; }
 
     [JsonProperty("coverImageTopOffset")]
-    public int CoverImageTopOffset { get; set; }
+    public int? CoverImageTopOffset { get; set; }
 
     [JsonProperty("titles")]
-    public Titles Titles { get; set; }
+    public AnimeTitles Titles { get; set; }
 
     [JsonProperty("canonicalTitle")]
     public string CanonicalTitle { get; set; }
@@ -76,10 +77,10 @@ public class MangaAttributes
     public Dictionary<string, string> RatingFrequencies { get; set; }
 
     [JsonProperty("userCount")]
-    public int UserCount { get; set; }
+    public int? UserCount { get; set; }
 
     [JsonProperty("favoritesCount")]
-    public int FavoritesCount { get; set; }
+    public int? FavoritesCount { get; set; }
 
     [JsonProperty("startDate")]
     public string StartDate { get; set; }
@@ -91,10 +92,10 @@ public class MangaAttributes
     public string NextRelease { get; set; }
 
     [JsonProperty("popularityRank")]
-    public int PopularityRank { get; set; }
+    public int? PopularityRank { get; set; }
 
     [JsonProperty("ratingRank")]
-    public int RatingRank { get; set; }
+    public int? RatingRank { get; set; }
 
     [JsonProperty("ageRating")]
     public string AgeRating { get; set; }
@@ -112,46 +113,43 @@ public class MangaAttributes
     public string Tba { get; set; }
 
     [JsonProperty("posterImage")]
-    public PosterImage PosterImage { get; set; }
+    public ImageData PosterImage { get; set; }
 
     [JsonProperty("coverImage")]
-    public CoverImage CoverImage { get; set; }
+    public ImageData CoverImage { get; set; }
 
-    [JsonProperty("chapterCount")]
-    public int? ChapterCount { get; set; }
+    [JsonProperty("episodeCount")]
+    public int? EpisodeCount { get; set; }
 
-    [JsonProperty("volumeCount")]
-    public int? VolumeCount { get; set; }
+    [JsonProperty("episodeLength")]
+    public int? EpisodeLength { get; set; }
 
-    [JsonProperty("serialization")]
-    public string Serialization { get; set; }
+    [JsonProperty("totalLength")]
+    public double TotalLength { get; set; }
 
-    [JsonProperty("mangaType")]
-    public string MangaType { get; set; }
+    [JsonProperty("youtubeVideoId")]
+    public string YoutubeVideoId { get; set; }
+
+    [JsonProperty("showType")]
+    public string ShowType { get; set; }
+
+    [JsonProperty("nsfw")]
+    public bool Nsfw { get; set; }
 }
 
-public class Titles
+public class AnimeTitles
 {
     [JsonProperty("en")]
-    public string En { get; set; }
+    public string English { get; set; }
 
     [JsonProperty("en_jp")]
-    public string EnJp { get; set; }
+    public string EnglishJapanese { get; set; }
 
     [JsonProperty("ja_jp")]
-    public string JaJp { get; set; }
+    public string Japanese { get; set; }
 }
 
-public class PosterImage
-{
-    [JsonProperty("original")]
-    public string Original { get; set; }
-
-    [JsonProperty("meta")]
-    public Meta Meta { get; set; }
-}
-
-public class CoverImage
+public class ImageData
 {
     [JsonProperty("tiny")]
     public string Tiny { get; set; }
@@ -162,20 +160,23 @@ public class CoverImage
     [JsonProperty("small")]
     public string Small { get; set; }
 
+    [JsonProperty("medium")]
+    public string Medium { get; set; }
+
     [JsonProperty("original")]
     public string Original { get; set; }
 
     [JsonProperty("meta")]
-    public Meta Meta { get; set; }
+    public ImageMeta Meta { get; set; }
 }
 
-public class Meta
+public class ImageMeta
 {
     [JsonProperty("dimensions")]
-    public Dimensions Dimensions { get; set; }
+    public ImageDimensions Dimensions { get; set; }
 }
 
-public class Dimensions
+public class ImageDimensions
 {
     [JsonProperty("tiny")]
     public Dimension Tiny { get; set; }
@@ -185,6 +186,9 @@ public class Dimensions
 
     [JsonProperty("small")]
     public Dimension Small { get; set; }
+
+    [JsonProperty("medium")]
+    public Dimension Medium { get; set; }
 }
 
 public class Dimension
@@ -196,53 +200,65 @@ public class Dimension
     public int? Height { get; set; }
 }
 
-public class Relationships
+public class AnimeRelationships
 {
     [JsonProperty("genres")]
-    public RelationshipItem Genres { get; set; }
+    public RelationshipLinks Genres { get; set; }
 
     [JsonProperty("categories")]
-    public RelationshipItem Categories { get; set; }
+    public RelationshipLinks Categories { get; set; }
 
     [JsonProperty("castings")]
-    public RelationshipItem Castings { get; set; }
+    public RelationshipLinks Castings { get; set; }
 
     [JsonProperty("installments")]
-    public RelationshipItem Installments { get; set; }
+    public RelationshipLinks Installments { get; set; }
 
     [JsonProperty("mappings")]
-    public RelationshipItem Mappings { get; set; }
+    public RelationshipLinks Mappings { get; set; }
 
     [JsonProperty("reviews")]
-    public RelationshipItem Reviews { get; set; }
+    public RelationshipLinks Reviews { get; set; }
 
     [JsonProperty("mediaRelationships")]
-    public RelationshipItem MediaRelationships { get; set; }
+    public RelationshipLinks MediaRelationships { get; set; }
 
     [JsonProperty("characters")]
-    public RelationshipItem Characters { get; set; }
+    public RelationshipLinks Characters { get; set; }
 
     [JsonProperty("staff")]
-    public RelationshipItem Staff { get; set; }
+    public RelationshipLinks Staff { get; set; }
 
     [JsonProperty("productions")]
-    public RelationshipItem Productions { get; set; }
+    public RelationshipLinks Productions { get; set; }
 
     [JsonProperty("quotes")]
-    public RelationshipItem Quotes { get; set; }
+    public RelationshipLinks Quotes { get; set; }
 
-    [JsonProperty("chapters")]
-    public RelationshipItem Chapters { get; set; }
+    [JsonProperty("episodes")]
+    public RelationshipLinks Episodes { get; set; }
 
-    [JsonProperty("mangaCharacters")]
-    public RelationshipItem MangaCharacters { get; set; }
+    [JsonProperty("streamingLinks")]
+    public RelationshipLinks StreamingLinks { get; set; }
 
-    [JsonProperty("mangaStaff")]
-    public RelationshipItem MangaStaff { get; set; }
+    [JsonProperty("animeProductions")]
+    public RelationshipLinks AnimeProductions { get; set; }
+
+    [JsonProperty("animeCharacters")]
+    public RelationshipLinks AnimeCharacters { get; set; }
+
+    [JsonProperty("animeStaff")]
+    public RelationshipLinks AnimeStaff { get; set; }
 }
 
-public class RelationshipItem
+public class RelationshipLinks
 {
     [JsonProperty("links")]
     public Links Links { get; set; }
+}
+
+public class Metadata
+{
+    [JsonProperty("count")]
+    public int? Count { get; set; }
 }

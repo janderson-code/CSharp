@@ -2,7 +2,7 @@ using ProjetoAnime.Core.DomainObjects;
 
 namespace ProjetoAnime.Anime.API.Models;
 
-public class Anime : Entity
+public class Anime : Entity, IAggregateRoot
 {
     public string Nome { get; set; }
     public string Sinopse { get; set; }

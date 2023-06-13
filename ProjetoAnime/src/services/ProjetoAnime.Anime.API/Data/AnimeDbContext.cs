@@ -12,7 +12,11 @@ public class AnimeDbContext :DbContext, IUnitOfWork
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Models.Anime>().ToTable("Animes");
+        foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
+                     e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+            property.SetColumnType("varchar(100)"); 
+        
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AnimeDbContext).Assembly);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

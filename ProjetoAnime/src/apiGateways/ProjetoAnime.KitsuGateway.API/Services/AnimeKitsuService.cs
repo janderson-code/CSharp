@@ -11,12 +11,12 @@ public class AnimeKitsuService : Service,IAnimeKitsuService
     {
         _httpService = httpService;
     }
-    public Models.Anime.Anime ObterAnimeNome(string nome)
+    public Models.Anime.AnimeKitsuResponse ObterAnimeNome(string nome)
     {
         string nomeAnime = nome.ToLower().Replace(" ", "-");
         var response = _httpService.Get($"https://kitsu.io/api/edge/anime?filter[slug]={nomeAnime}").Result;
         TratarErrosResponse(response);
-        var content = DeserializarObjetoResponse<Models.Anime.Anime>(response).Result;
+        var content = DeserializarObjetoResponse<Models.Anime.AnimeKitsuResponse>(response).Result;
         return content;
     }
 }
