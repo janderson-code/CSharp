@@ -22,7 +22,8 @@ public class AnimesController : MainController
     [HttpGet("obter-anime_id")]
     public async Task<Models.Anime> detalhes(Guid id)
     {
-        return await _animeRepository.ObterPorId(id);
+        var anime = _animeRepository.ObterPorId(id).Result;
+        return anime;
     }
 
     [HttpPost("cadastrar")]
