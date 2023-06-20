@@ -4,7 +4,7 @@ using ProjetoAnime.KitsuGateway.API.Services;
 
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
-public class AnimeKitsuController : MainController
+internal sealed class AnimeKitsuController : MainController
 {
     private readonly IAnimeKitsuService _animeKitsuService;
 
@@ -12,8 +12,11 @@ public class AnimeKitsuController : MainController
     {
         _animeKitsuService = animeKitsuService;
     }
+
     // GET
     [HttpGet("obter-anime-nome")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Index(string nome)
     {
         return Ok(_animeKitsuService.ObterAnimeNome(nome));

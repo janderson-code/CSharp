@@ -4,7 +4,7 @@ using ProjetoAnime.Core.API.Controllers;
 
 namespace ProjetoAnime.Anime.API.Controllers;
 
-public class AnimesController : MainController
+internal sealed class AnimesController : MainController
 {
     private readonly IAnimeRepository _animeRepository;
 

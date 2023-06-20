@@ -1,7 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -15,7 +14,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace ProjetoAnime.Identidade.API.Controllers
 {
     [Route("api/identidade")]
-    public class AuthController : MainController
+    internal sealed class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -26,9 +25,10 @@ namespace ProjetoAnime.Identidade.API.Controllers
         {
             _signInManager = signManager;
             _userManager = userManager;
-            _appSettings = appSettings.Value; // Pegando o valor dos dados do appSettings.json em tempo de execução com IOptions do appSettings
+            _appSettings =
+                appSettings.Value; // Pegando o valor dos dados do appSettings.json em tempo de execução com IOptions do appSettings
         }
-    
+
         [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistroViewModel usuarioRegistro)
         {
@@ -40,8 +40,8 @@ namespace ProjetoAnime.Identidade.API.Controllers
                 Email = usuarioRegistro.Email,
                 EmailConfirmed = true
             };
-            
-            var result =  _userManager.CreateAsync(user, usuarioRegistro.Senha).Result;
+
+            var result = _userManager.CreateAsync(user, usuarioRegistro.Senha).Result;
 
             if (result.Succeeded)
             {
@@ -82,9 +82,9 @@ namespace ProjetoAnime.Identidade.API.Controllers
 
         private async Task<UsuarioRespostaLogin> GerarJwt(string email)
         {
-            var user =  _userManager.FindByEmailAsync(email).Result; // Obter usuário pelo email
-            var claims =  _userManager.GetClaimsAsync(user).Result; //  Obter as Claims deste usuário 
-            var userRoles =  _userManager.GetRolesAsync(user).Result; // Obter as Roles deste Usuário
+            var user = _userManager.FindByEmailAsync(email).Result; // Obter usuário pelo email
+            var claims = _userManager.GetClaimsAsync(user).Result; //  Obter as Claims deste usuário 
+            var userRoles = _userManager.GetRolesAsync(user).Result; // Obter as Roles deste Usuário
 
             //Adicionando mais claims do Tipo JWT na lista de Claims do usuário 
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));

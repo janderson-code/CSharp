@@ -4,7 +4,7 @@ using ProjetoAnime.KitsuGateway.API.Services;
 
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
-public class MangaKitsuController : MainController
+internal sealed class MangaKitsuController : MainController
 {
     private readonly IMangaKitsuService _mangaKitsuService;
 
@@ -15,6 +15,8 @@ public class MangaKitsuController : MainController
 
     // GET
     [HttpGet("obter-manga-nome")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Index(string nome)
     {
         return Ok(_mangaKitsuService.obterMangaNome(nome));

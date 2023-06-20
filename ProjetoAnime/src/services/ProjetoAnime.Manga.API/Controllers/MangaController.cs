@@ -4,7 +4,7 @@ using ProjetoAnime.Manga.API.Interfaces;
 
 namespace ProjetoAnime.Manga.API.Controllers;
 
-public class MangasController : MainController
+internal sealed class MangasController : MainController
 {
     private readonly IMangaRepository _mangaRepository;
 
@@ -12,7 +12,7 @@ public class MangasController : MainController
     {
         _mangaRepository = mangaRepository;
     }
-    
+
     [HttpGet("obter-todos-mangas")]
     public async Task<IEnumerable<Models.Manga>> Index()
     {
@@ -32,12 +32,11 @@ public class MangasController : MainController
         try
         {
             _mangaRepository.Adicionar(manga);
-            return CreatedAtAction("Index",new {id = manga.Id},manga);
+            return CreatedAtAction("Index", new { id = manga.Id }, manga);
         }
         catch (Exception e)
         {
             return BadRequest();
         }
-
-    } 
+    }
 }
