@@ -1,3 +1,5 @@
+using ProjetoAnime.Anime.API.Configuration;
+
 namespace ProjetoAnime.Manga.API.Configuration;
 
 public class Startup : IStartup
@@ -14,22 +16,25 @@ public class Startup : IStartup
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+           app.UseSwaggerConfiguration();
         }
 
+        app.AddConfigureMigrate();
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
-
         app.MapControllers();
     }
 
     public void ConfigureService(IServiceCollection services)
     {
+        services.DIConfigure();
+        services.AddDbContextConfig(Configuration);
         services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerConfiguration();
+        
+        
     }
 }
