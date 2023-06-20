@@ -6,7 +6,7 @@ public class IdentityMensagensPortugues : IdentityErrorDescriber
 {
     public override IdentityError DefaultError()
     {
-        return new IdentityError { Code = nameof(DefaultError), Description = $"Ocorreu um erro desconhecido." };
+        return new IdentityError { Code = nameof(DefaultError), Description = "Ocorreu um erro desconhecido." };
     }
 
     public override IdentityError ConcurrencyFailure()

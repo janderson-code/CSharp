@@ -7,10 +7,6 @@ namespace ProjetoAnime.Core.API.Services;
 
 public abstract class Service
 {
-    public Service()
-    {
-    }
-
     protected StringContent ObterConteudo(object dados)
     {
         return new StringContent(JsonConvert.SerializeObject(dados), Encoding.UTF8, "application/json");

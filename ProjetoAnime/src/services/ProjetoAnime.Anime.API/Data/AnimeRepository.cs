@@ -1,4 +1,3 @@
-using System.Runtime.Intrinsics.X86;
 using Microsoft.EntityFrameworkCore;
 using ProjetoAnime.Anime.API.Models;
 using ProjetoAnime.Core.Data;

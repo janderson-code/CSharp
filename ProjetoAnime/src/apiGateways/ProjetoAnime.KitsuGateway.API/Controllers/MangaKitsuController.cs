@@ -4,7 +4,7 @@ using ProjetoAnime.KitsuGateway.API.Services;
 
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
-internal sealed class MangaKitsuController : MainController
+public sealed class MangaKitsuController : MainController
 {
     private readonly IMangaKitsuService _mangaKitsuService;
 

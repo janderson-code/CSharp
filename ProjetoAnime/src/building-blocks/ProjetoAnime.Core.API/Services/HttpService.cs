@@ -1,5 +1,3 @@
-using System.Net.Http.Headers;
-
 namespace ProjetoAnime.Core.API.Services;
 
 public class HttpService : IHttpService
