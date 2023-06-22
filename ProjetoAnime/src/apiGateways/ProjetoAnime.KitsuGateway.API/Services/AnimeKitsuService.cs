@@ -20,11 +20,11 @@ public class AnimeKitsuService : Service,IAnimeKitsuService
         return content;
     }
 
-    public List<AnimeKitsuResponse> AnimesEmAlta()
+    public AnimeKitsuResponse AnimesEmAlta()
     {
         var response = _httpService.Get("https://kitsu.io/api/edge/trending/anime").Result;
         TratarErrosResponse(response);
-        var content = DeserializarObjetoResponse<List<AnimeKitsuResponse>>(response).Result;
+        var content = DeserializarObjetoResponse<AnimeKitsuResponse>(response).Result;
         return content;
     }
 }

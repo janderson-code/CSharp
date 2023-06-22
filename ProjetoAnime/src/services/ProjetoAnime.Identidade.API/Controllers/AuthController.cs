@@ -14,7 +14,7 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 namespace ProjetoAnime.Identidade.API.Controllers
 {
     [Route("api/identidade")]
-    internal sealed class AuthController : MainController
+    public sealed class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;

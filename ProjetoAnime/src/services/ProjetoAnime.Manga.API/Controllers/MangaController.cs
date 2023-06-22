@@ -4,7 +4,7 @@ using ProjetoAnime.Manga.API.Interfaces;
 
 namespace ProjetoAnime.Manga.API.Controllers;
 
-internal sealed class MangasController : MainController
+public sealed class MangasController : MainController
 {
     private readonly IMangaRepository _mangaRepository;
 
