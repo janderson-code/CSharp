@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoAnime.Core.API", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoAnime.Webapp.MVC", "src\web\ProjetoAnime.Webapp.MVC\ProjetoAnime.Webapp.MVC.csproj", "{52CFEAED-8D3B-483A-9CE6-E4E9F36C502F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{85A2FD14-C201-479E-9BCD-B773135CCBEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Architecture.Test", "Architecture.Test\Architecture.Test.csproj", "{397873F0-A6E3-407C-AB5E-CCBE2353A8E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,10 @@ Global
 		{52CFEAED-8D3B-483A-9CE6-E4E9F36C502F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52CFEAED-8D3B-483A-9CE6-E4E9F36C502F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52CFEAED-8D3B-483A-9CE6-E4E9F36C502F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397873F0-A6E3-407C-AB5E-CCBE2353A8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397873F0-A6E3-407C-AB5E-CCBE2353A8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397873F0-A6E3-407C-AB5E-CCBE2353A8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397873F0-A6E3-407C-AB5E-CCBE2353A8E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +94,8 @@ Global
 		{4781108E-C6EC-4DC0-9206-5BEB566D88EB} = {A67FD1DF-1423-48A6-8A2B-3704112A11B5}
 		{20B16DC2-76DF-4D24-9EE2-2F2734AD40CD} = {C11A5C1E-5233-47D1-8F75-DFC903F7FAD2}
 		{52CFEAED-8D3B-483A-9CE6-E4E9F36C502F} = {9731081E-7691-4B5E-A36F-32789EADF695}
+		{85A2FD14-C201-479E-9BCD-B773135CCBEB} = {4E1FFFD1-343D-4FC0-96A8-CFFCEF17F0DA}
+		{397873F0-A6E3-407C-AB5E-CCBE2353A8E0} = {85A2FD14-C201-479E-9BCD-B773135CCBEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BADEC80-662A-4455-B030-E94B43B03062}
