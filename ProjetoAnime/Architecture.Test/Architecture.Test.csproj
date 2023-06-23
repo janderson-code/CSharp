@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\building-blocks\ProjetoAnime.Core\ProjetoAnime.Core.csproj" />
+    <ProjectReference Include="..\src\services\ProjetoAnime.Anime.API\ProjetoAnime.Anime.API.csproj" />
   </ItemGroup>
 
 </Project>
