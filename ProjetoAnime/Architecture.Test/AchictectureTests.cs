@@ -9,7 +9,7 @@ public class Tests
     {
     }
 
-    [TestCase(TestName = "Teste Core não pode ter dependência")]
+    [TestCase(TestName = "Teste Core nÃ£o pode ter dependÃªncia")]
     public void Core_Should_Not_haveDependencyOnOtherProjects()
     {
         // Arrange
