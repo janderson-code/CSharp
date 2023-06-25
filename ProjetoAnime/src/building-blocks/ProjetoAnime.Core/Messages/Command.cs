@@ -1,7 +1,4 @@
-﻿using FluentValidation.Results;
-using MediatR;
-
-public abstract class Command : Message, IRequest<ValidationResult>
+﻿public abstract class Command : Message, IRequest<ValidationResult>
 {
     protected Command()
     {

@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace ProjetoAnime.KitsuGateway.API.Models.Manga;
 public class MangaKitsuResponse
 {

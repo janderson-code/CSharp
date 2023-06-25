@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-
-namespace ProjetoAnime.Core
+﻿namespace ProjetoAnime.Core
 {
-    public  class CoreAssembly
+    public class CoreAssembly
     {
         public static readonly Assembly AssemblyReference = Assembly.GetExecutingAssembly();
     }

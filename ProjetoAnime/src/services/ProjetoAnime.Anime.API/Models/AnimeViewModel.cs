@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
 namespace ProjetoAnime.Anime.API.Models;
 
 public class AnimeViewModel

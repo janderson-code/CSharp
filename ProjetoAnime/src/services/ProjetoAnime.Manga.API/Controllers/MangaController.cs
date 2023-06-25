@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using ProjetoAnime.Core.API.Controllers;
 using ProjetoAnime.Manga.API.Interfaces;
 

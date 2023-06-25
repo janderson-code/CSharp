@@ -1,5 +1,4 @@
 using ProjetoAnime.Core.Data;
-
 namespace ProjetoAnime.Anime.API.Models;
 
 public interface IAnimeRepository : IRepository<Anime>

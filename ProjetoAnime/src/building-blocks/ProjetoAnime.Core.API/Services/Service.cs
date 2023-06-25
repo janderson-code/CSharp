@@ -1,6 +1,3 @@
-using System.Net;
-using System.Text;
-using Newtonsoft.Json;
 using ProjetoAnime.Core.Communication;
 
 namespace ProjetoAnime.Core.API.Services;

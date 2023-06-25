@@ -25,4 +25,8 @@
       <ProjectReference Include="..\ProjetoAnime.Core\ProjetoAnime.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="WeatherForecast.cs" />
+    </ItemGroup>
+
 </Project>

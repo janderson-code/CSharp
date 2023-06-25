@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using ProjetoAnime.Core.API.Controllers;
-using ProjetoAnime.KitsuGateway.API.Models.Anime;
-using ProjetoAnime.KitsuGateway.API.Services;
-
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
 public sealed class AnimeKitsuController : MainController
@@ -15,7 +10,7 @@ public sealed class AnimeKitsuController : MainController
     }
 
     [HttpGet("obter-anime-nome")]
-    [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(AnimeKitsuResponse))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AnimeKitsuResponse))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Index(string nome)
     {
@@ -23,7 +18,7 @@ public sealed class AnimeKitsuController : MainController
     }
 
     [HttpGet("anime-em-alta")]
-    [ProducesResponseType(StatusCodes.Status200OK,Type = typeof(AnimeKitsuResponse))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AnimeKitsuResponse))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult AnimesAlta()
     {

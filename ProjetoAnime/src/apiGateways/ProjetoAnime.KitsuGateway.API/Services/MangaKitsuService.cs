@@ -1,12 +1,9 @@
-using ProjetoAnime.Core.API.Services;
-using ProjetoAnime.KitsuGateway.API.Models.Manga;
-
 namespace ProjetoAnime.KitsuGateway.API.Services;
 
-public class MangaKitsuService : Service,IMangaKitsuService
+public class MangaKitsuService : Service, IMangaKitsuService
 {
     private readonly IHttpService _httpService;
-    
+
     public MangaKitsuService(IHttpService httpService)
     {
         _httpService = httpService;

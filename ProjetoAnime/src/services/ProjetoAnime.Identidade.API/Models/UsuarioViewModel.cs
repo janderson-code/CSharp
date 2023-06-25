@@ -1,6 +1,3 @@
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
 namespace ProjetoAnime.Identidade.API.Models;
 
 public class UsuarioRegistroViewModel // representa o registro do usuário

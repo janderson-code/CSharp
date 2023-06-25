@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using ProjetoAnime.Core.API.Controllers;
-using ProjetoAnime.KitsuGateway.API.Services;
-
 namespace ProjetoAnime.KitsuGateway.API.Controllers;
 
 public sealed class MangaKitsuController : MainController

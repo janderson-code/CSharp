@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using ProjetoAnime.Webapp.MVC.Models;
-
-namespace ProjetoAnime.Webapp.MVC.Controllers;
+﻿namespace ProjetoAnime.Webapp.MVC.Controllers;
 
 public class HomeController : Controller
 {

@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using ProjetoAnime.Anime.API.Data;
 
 namespace ProjetoAnime.Anime.API.Configuration;
@@ -7,7 +6,6 @@ public static class DbConfig
 {
     public static IServiceCollection AddDbContextConfig(this IServiceCollection services, IConfiguration configuration)
     {
-        
         services.AddControllersWithViews();
         services.AddDbContext<AnimeDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
@@ -17,7 +15,6 @@ public static class DbConfig
 
     public static IApplicationBuilder AddConfigureMigrate(this IApplicationBuilder app)
     {
-        
         using (var scope = app.ApplicationServices.CreateScope())
         {
             var services = scope.ServiceProvider;

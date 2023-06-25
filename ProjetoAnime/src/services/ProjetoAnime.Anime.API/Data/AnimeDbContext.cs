@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using ProjetoAnime.Core.Data;
 
 namespace ProjetoAnime.Anime.API.Data;

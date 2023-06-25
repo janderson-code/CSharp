@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ProjetoAnime.Identidade.API.Models;
 
 public class UsuarioLoginViewModel // representa o Login

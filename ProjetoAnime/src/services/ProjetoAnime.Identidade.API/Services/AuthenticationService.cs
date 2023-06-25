@@ -1,10 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using ProjetoAnime.Identidade.API.Extensions;
+﻿using ProjetoAnime.Identidade.API.Extensions;
 using ProjetoAnime.Identidade.API.Models.NerdStore.Enterprise.Identidade.API.Models;
 
 namespace ProjetoAnime.Identidade.API.Services

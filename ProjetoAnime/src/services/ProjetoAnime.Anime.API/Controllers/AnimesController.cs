@@ -1,10 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
 using ProjetoAnime.Anime.API.Models;
 using ProjetoAnime.Core.API.Controllers;
 
 namespace ProjetoAnime.Anime.API.Controllers;
 
-internal sealed class AnimesController : MainController
+public sealed class AnimesController : MainController
 {
     private readonly IAnimeRepository _animeRepository;
 
@@ -12,7 +11,7 @@ internal sealed class AnimesController : MainController
     {
         _animeRepository = animeRepository;
     }
-    
+
     [HttpGet("obter-todos-animes")]
     public async Task<IEnumerable<Models.Anime>> Index()
     {
@@ -32,12 +31,11 @@ internal sealed class AnimesController : MainController
         try
         {
             _animeRepository.Adicionar(anime);
-            return CreatedAtAction("Index",new {id = anime.Id},anime);
+            return CreatedAtAction("Index", new { id = anime.Id }, anime);
         }
         catch (Exception e)
         {
             return BadRequest();
         }
-
-    } 
+    }
 }

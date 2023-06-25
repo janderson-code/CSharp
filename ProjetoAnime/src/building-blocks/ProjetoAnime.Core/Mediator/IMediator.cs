@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using ProjetoAnime.Core.Messages;
+﻿using ProjetoAnime.Core.Messages;
 
 namespace ProjetoAnime.Core.Mediator
 {

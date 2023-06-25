@@ -1,5 +1,3 @@
-using System.Security.Claims;
-
 namespace ProjetoAnime.Core.API.User;
 
 public interface IAspNetUser

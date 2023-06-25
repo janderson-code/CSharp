@@ -1,7 +1,5 @@
-
-using ProjetoAnime.Anime.API;
-
 namespace Architecture.Test;
+
 public class Tests
 {
     [SetUp]
@@ -24,10 +22,10 @@ public class Tests
 
         // Act
         var testResult = Types
-                     .InAssembly(assembly)
-                     .ShouldNot()
-                     .HaveDependencyOnAll(properties)
-                     .GetResult();
+            .InAssembly(assembly)
+            .ShouldNot()
+            .HaveDependencyOnAll(properties)
+            .GetResult();
 
         // Assert
         var result = testResult.IsSuccessful;
@@ -52,16 +50,16 @@ public class Tests
 
         // Act
         var testResult = Types
-                     .InAssembly(assembly)
-                     .That()
-                     .HaveNameEndingWith("Core")
-                     .And()
-                     .HaveNameEndingWith("Core.API")
-                     .Should()
-                     .HaveDependencyOn(nameSpace)
-                     .And()
-                     .NotHaveDependencyOnAll(properties)
-                     .GetResult();
+            .InAssembly(assembly)
+            .That()
+            .HaveNameEndingWith("Core")
+            .And()
+            .HaveNameEndingWith("Core.API")
+            .Should()
+            .HaveDependencyOn(nameSpace)
+            .And()
+            .NotHaveDependencyOnAll(properties)
+            .GetResult();
 
         // Assert
         var result = testResult.IsSuccessful;

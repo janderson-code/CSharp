@@ -1,5 +1,5 @@
-﻿
-namespace Architecture.Test;
+﻿namespace Architecture.Test;
+
 public class ArchitectureTestsNameSpace
 {
     private const string DomainNameSpace = "Domain";
@@ -13,4 +13,3 @@ public class ArchitectureTestsNameSpace
     private const string MangaAPINameSpace = "ProjetoAnime.Manga.API";
     private const string IdentidadeAPINameSpace = "ProjetoAnime.Identidade.API";
 }
-

@@ -1,5 +1,4 @@
 namespace ProjetoAnime.Core.Communication;
-
 public class ResponseResult
 {
     public ResponseResult()

@@ -1,5 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+
 
 namespace ProjetoAnime.Core.API.Controllers;
 

@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-
 namespace ProjetoAnime.Identidade.API.Extensions;
 
 public class IdentityMensagensPortugues : IdentityErrorDescriber
@@ -31,7 +29,7 @@ public class IdentityMensagensPortugues : IdentityErrorDescriber
     public override IdentityError LoginAlreadyAssociated()
     {
         return new IdentityError
-        { Code = nameof(LoginAlreadyAssociated), Description = "Já existe um usuário com este login." };
+            { Code = nameof(LoginAlreadyAssociated), Description = "Já existe um usuário com este login." };
     }
 
     public override IdentityError InvalidUserName(string userName)
@@ -51,13 +49,13 @@ public class IdentityMensagensPortugues : IdentityErrorDescriber
     public override IdentityError DuplicateUserName(string userName)
     {
         return new IdentityError
-        { Code = nameof(DuplicateUserName), Description = $"O login '{userName}' já está sendo utilizado." };
+            { Code = nameof(DuplicateUserName), Description = $"O login '{userName}' já está sendo utilizado." };
     }
 
     public override IdentityError DuplicateEmail(string email)
     {
         return new IdentityError
-        { Code = nameof(DuplicateEmail), Description = $"O email '{email}' já está sendo utilizado." };
+            { Code = nameof(DuplicateEmail), Description = $"O email '{email}' já está sendo utilizado." };
     }
 
     public override IdentityError InvalidRoleName(string role)
@@ -68,37 +66,37 @@ public class IdentityMensagensPortugues : IdentityErrorDescriber
     public override IdentityError DuplicateRoleName(string role)
     {
         return new IdentityError
-        { Code = nameof(DuplicateRoleName), Description = $"A permissão '{role}' já está sendo utilizada." };
+            { Code = nameof(DuplicateRoleName), Description = $"A permissão '{role}' já está sendo utilizada." };
     }
 
     public override IdentityError UserAlreadyHasPassword()
     {
         return new IdentityError
-        { Code = nameof(UserAlreadyHasPassword), Description = "O usuário já possui uma senha definida." };
+            { Code = nameof(UserAlreadyHasPassword), Description = "O usuário já possui uma senha definida." };
     }
 
     public override IdentityError UserLockoutNotEnabled()
     {
         return new IdentityError
-        { Code = nameof(UserLockoutNotEnabled), Description = "O lockout não está habilitado para este usuário." };
+            { Code = nameof(UserLockoutNotEnabled), Description = "O lockout não está habilitado para este usuário." };
     }
 
     public override IdentityError UserAlreadyInRole(string role)
     {
         return new IdentityError
-        { Code = nameof(UserAlreadyInRole), Description = $"O usuário já possui a permissão '{role}'." };
+            { Code = nameof(UserAlreadyInRole), Description = $"O usuário já possui a permissão '{role}'." };
     }
 
     public override IdentityError UserNotInRole(string role)
     {
         return new IdentityError
-        { Code = nameof(UserNotInRole), Description = $"O usuário não tem a permissão '{role}'." };
+            { Code = nameof(UserNotInRole), Description = $"O usuário não tem a permissão '{role}'." };
     }
 
     public override IdentityError PasswordTooShort(int length)
     {
         return new IdentityError
-        { Code = nameof(PasswordTooShort), Description = $"As senhas devem conter ao menos {length} caracteres." };
+            { Code = nameof(PasswordTooShort), Description = $"As senhas devem conter ao menos {length} caracteres." };
     }
 
     public override IdentityError PasswordRequiresNonAlphanumeric()
