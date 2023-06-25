@@ -1,17 +1,22 @@
-﻿namespace ProjetoAnime.Webapp.MVC.Controllers;
+﻿using ProjetoAnime.Webapp.MVC.Services;
+
+namespace ProjetoAnime.Webapp.MVC.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IKitsuService _kitsuService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IKitsuService kitsuService)
     {
         _logger = logger;
+        _kitsuService = kitsuService;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var response = _kitsuService.ObterAnimesAlta().Result;
+        return View(response);
     }
 
     public IActionResult Privacy()

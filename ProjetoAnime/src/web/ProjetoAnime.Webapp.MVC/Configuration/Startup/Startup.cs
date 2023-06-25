@@ -1,4 +1,6 @@
-﻿namespace ProjetoAnime.Webapp.MVC.Configuration
+﻿using ProjetoAnime.Webapp.MVC.Extensions;
+
+namespace ProjetoAnime.Webapp.MVC.Configuration
 {
     public class Startup : IStartup
     {
@@ -35,7 +37,9 @@
 
         public void ConfigureService(IServiceCollection services)
         {
+            services.Register();
             services.AddControllersWithViews();
+            services.Configure<AppSettings>(Configuration);
         }
     }
 }

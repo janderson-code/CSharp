@@ -14,7 +14,7 @@ public sealed class AnimeKitsuController : MainController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult Index(string nome)
     {
-        return Ok(_animeKitsuService.ObterAnimeNome(nome));
+        return CustomResponse(_animeKitsuService.ObterAnimeNome(nome));
     }
 
     [HttpGet("anime-em-alta")]
@@ -22,6 +22,6 @@ public sealed class AnimeKitsuController : MainController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public IActionResult AnimesAlta()
     {
-        return Ok(_animeKitsuService.AnimesEmAlta());
+        return CustomResponse(_animeKitsuService.AnimesEmAlta());
     }
 }

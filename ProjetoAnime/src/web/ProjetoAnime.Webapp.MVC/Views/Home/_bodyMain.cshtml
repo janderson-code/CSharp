@@ -1,15 +1,19 @@
+@model ProjetoAnime.Webapp.MVC.Models.Anime.AnimeKitsuViewModel
 <main>
     <section class="galeria">
         <div class="fotos">
-            <img src="{{anime.coverImage}}" alt="a"> 
+            @foreach (var item  in Model.Data)
+            {
+                <img src="@item.Attributes.CoverImage.Original" alt="a">
+            }
         </div>
     </section>
     <h3 class="center card-panel blue-grey darken-4 white-text">- Animes | Destaques -</h3>
     <div class="row">
-        
+        <partial name="_cards"></partial>
     </div>
     <h3 class="center card-panel blue-grey darken-4 white-text">- Mangas | Destaques -</h3>
     <div class="row">
-        <partial name="_cards"></partial>
+         <partial name="_cards"></partial>
     </div>
 </main>
