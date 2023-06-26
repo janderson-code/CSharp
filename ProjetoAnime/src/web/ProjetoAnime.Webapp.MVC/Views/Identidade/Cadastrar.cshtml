@@ -1,34 +1,39 @@
 ﻿@page
 @model ProjetoAnime.Webapp.MVC.Models.Identidade.UsuarioRegistroViewModel
 @{
-     Layout = "";
+    Layout = "";
 }
-<!DOCTYPE html>
+
 <html>
 <partial name="_Head"></partial>
 <body>
+    <main>
+        <div class="row">
+            <div class="col s12 m6 offset-m3 center-align">
+                <div class="card small">
+                    @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { @class = "container" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-  <div class="card small col col-sm-12 m6 offset-md-6 center-align" style="width:50%">
-    @using (Html.BeginForm("Action", "Controller", FormMethod.Post, new { @class = "container" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <h3>Formulário</h3>
-        <div class="input-field">
-            @Html.TextBoxFor(m => m.Nome, new { id = "Nome", required = "required" })
-            @Html.LabelFor(m => m.Nome)
+                        <h3>Formulário de Cadastro</h3>
+                        <div class="input-field">
+                            @Html.TextBoxFor(m => m.Nome, new { id = "Nome", required = "required" })
+                            @Html.LabelFor(m => m.Nome)
+                        </div>
+                        <div class="input-field">
+                            @Html.TextBoxFor(m => m.Email, new { id = "Email", required = "required" })
+                            @Html.LabelFor(m => m.Email)
+                        </div>
+                        <div class="input-field">
+                            @Html.PasswordFor(m => m.Senha, new { id = "Senha", @class = "validate", required = "required" })
+                            @Html.LabelFor(m => m.Senha)
+                        </div>
+                        <button class="btn waves-effect waves-light blue" type="submit">Enviar</button>
+                    }
+                </div>
+            </div>
         </div>
-        <div class="input-field">
-            @Html.TextBoxFor(m => m.Email, new { id = "Email", required = "required" })
-            @Html.LabelFor(m => m.Email)
-        </div>
-        <div class="input-field">
-            @Html.PasswordFor(m => m.Senha, new { id = "Senha", @class = "validate", required = "required" })
-            @Html.LabelFor(m => m.Senha)
-        </div>
-        <button class="btn waves-effect waves-light blue" type="submit">Enviar</button>
-    }
-  </div>
-
+    </main>
+    <partial name="_footer"></partial>
 </body>
 </html>
