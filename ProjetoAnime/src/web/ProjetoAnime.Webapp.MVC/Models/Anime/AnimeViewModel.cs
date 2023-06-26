@@ -3,6 +3,7 @@ namespace ProjetoAnime.Webapp.MVC.Models.Anime;
 public class AnimeKitsuViewModel
 {
     public List<AnimeDataViewModel> Data { get; set; }
+
 }
 
 public class AnimeDataViewModel

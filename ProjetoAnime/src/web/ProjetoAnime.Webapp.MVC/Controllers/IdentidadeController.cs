@@ -1,17 +1,17 @@
 namespace ProjetoAnime.Webapp.MVC.Controllers;
 
-public class IdentidadeController : Controller
+public sealed class IdentidadeController : Controller
 {
-    // GET
-    [HttpPost("cadastrarUsuario")]
+
+    [HttpGet("cadastrarUsuario")]
     public IActionResult Cadastrar()
     {
-        return Ok();
+        return View();
     }
 
-    [HttpPost("logar")]
+    [HttpGet("logar")]
     public IActionResult Login()
     {
-        return Ok();
+        return View();
     }
 }
