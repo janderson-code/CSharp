@@ -15,8 +15,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var response = _kitsuService.ObterAnimesAlta().Result;
-        return View(response);
+        var responseAnime = _kitsuService.ObterAnimesAlta().Result;
+        var responseManga = _kitsuService.ObterMangasAlta().Result;
+
+        KitsuViewModel kitsu = new KitsuViewModel();
+        kitsu.Anime = responseAnime;
+        kitsu.Manga = responseManga;
+        return View(kitsu);
     }
 
     public IActionResult Privacy()

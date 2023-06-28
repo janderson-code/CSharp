@@ -1,8 +1,8 @@
-@model ProjetoAnime.Webapp.MVC.Models.Anime.AnimeKitsuViewModel
+@model ProjetoAnime.Webapp.MVC.Models.KitsuViewModel
 <main>
     <section class="galeria">
         <div class="fotos">
-            @foreach (var item  in Model.Data)
+            @foreach (var item  in Model.Anime.Data)
             {
                 <img src="@item.Attributes.CoverImage.Large" alt="a">
             }
@@ -14,6 +14,6 @@
     </div>
     <h3 class="center card-panel blue-grey darken-4 white-text">- Mangas | Destaques -</h3>
     <div class="row">
-         <partial name="_cards"></partial>
+         <partial name="_cardsManga"></partial>
     </div>
 </main>

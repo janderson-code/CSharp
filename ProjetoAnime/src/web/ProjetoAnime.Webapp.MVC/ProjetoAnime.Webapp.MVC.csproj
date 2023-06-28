@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Manga\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\building-blocks\ProjetoAnime.Core.API\ProjetoAnime.Core.API.csproj" />
     <ProjectReference Include="..\..\building-blocks\ProjetoAnime.Core\ProjetoAnime.Core.csproj" />
   </ItemGroup>

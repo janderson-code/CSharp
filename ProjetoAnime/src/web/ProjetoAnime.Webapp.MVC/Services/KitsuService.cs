@@ -2,6 +2,7 @@ using System.Net;
 using Microsoft.Extensions.Options;
 using ProjetoAnime.Webapp.MVC.Extensions;
 using ProjetoAnime.Webapp.MVC.Models.Anime;
+using ProjetoManga.Webapp.MVC.Models.Manga;
 
 namespace ProjetoAnime.Webapp.MVC.Services;
 
@@ -24,9 +25,18 @@ public class KitsuService : Service, IKitsuService
         var obj = DeserializarObjetoResponse<AnimeKitsuViewModel>(response).Result;
         return obj;
     }
+
+    public async Task<MangaKitsuViewModel> ObterMangasAlta()
+    {
+        var response = await _httpClient.GetAsync($"mangas-em-alta");
+        TratarErrosResponse(response);
+        var obj = DeserializarObjetoResponse<MangaKitsuViewModel>(response).Result;
+        return obj;
+    }
 }
 
 public interface IKitsuService
 {
     Task<AnimeKitsuViewModel> ObterAnimesAlta();
+    Task<MangaKitsuViewModel> ObterMangasAlta();
 }
