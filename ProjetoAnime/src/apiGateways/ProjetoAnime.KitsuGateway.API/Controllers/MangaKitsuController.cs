@@ -17,4 +17,12 @@ public sealed class MangaKitsuController : MainController
     {
         return Ok(_mangaKitsuService.obterMangaNome(nome));
     }
+
+    [HttpGet("mangas-em-alta")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MangaKitsuResponse))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public IActionResult AnimesAlta()
+    {
+        return CustomResponse(_mangaKitsuService.MangasEmAlta());
+    }
 }

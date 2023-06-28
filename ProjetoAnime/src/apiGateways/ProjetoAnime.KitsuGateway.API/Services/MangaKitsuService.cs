@@ -17,4 +17,12 @@ public class MangaKitsuService : Service, IMangaKitsuService
         var content = DeserializarObjetoResponse<MangaKitsuResponse>(response).Result;
         return content;
     }
+
+    public MangaKitsuResponse MangasEmAlta()
+    {
+        var response = _httpService.Get("https://kitsu.io/api/edge/trending/manga").Result;
+        TratarErrosResponse(response);
+        var content = DeserializarObjetoResponse<MangaKitsuResponse>(response).Result;
+        return content;
+    }
 }
