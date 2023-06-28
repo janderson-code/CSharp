@@ -14,7 +14,6 @@ namespace ProjetoAnime.Webapp.MVC.Configuration
         public void Configure(WebApplication app, IWebHostEnvironment env)
         {
             app.UseApiConfig(Configuration);
-
         }
 
         public void ConfigureService(IServiceCollection services)

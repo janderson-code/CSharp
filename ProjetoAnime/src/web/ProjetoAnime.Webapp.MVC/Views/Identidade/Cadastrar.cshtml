@@ -1,6 +1,8 @@
 ﻿@page
 @model ProjetoAnime.Webapp.MVC.Models.Identidade.UsuarioRegistroViewModel
-
+@{
+      ViewData["Title"] = "Registro";
+}
 <div class="row">
     <div class="col s12">
         <div class="card" style="max-width: 500px; margin: 100px auto;">
@@ -13,18 +15,22 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.Nome)
                         @Html.TextBoxFor(m => m.Nome, new { id = "Nome", required = "required" })
+                        <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email)
                         @Html.TextBoxFor(m => m.Email, new { id = "Email", required = "required" })
+                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Senha)
                         @Html.PasswordFor(m => m.Senha, new { id = "SenhaConfirmacao", @class = "validate", required = "required" })
+                        <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.SenhaConfirmacao)
                         @Html.PasswordFor(m => m.SenhaConfirmacao, new { id = "SenhaConfirmacao", @class = "validate", required = "required" })
+                        <span asp-validation-for="SenhaConfirmacao" class="text-danger"></span>
                     </div>
                     <div class="form-group center-align" style="margin-top:30px">
                         <button class="btn waves-effect waves-light blue" type="submit" name="action">Enviar
@@ -36,4 +42,7 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 

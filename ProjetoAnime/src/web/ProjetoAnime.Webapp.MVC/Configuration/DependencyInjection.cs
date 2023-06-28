@@ -9,6 +9,7 @@ public static class DependencyInjection
     {
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped<IAspNetUser, AspNetUser>();
+        services.AddScoped<IAutenticacaoService, AutenticacaoService>();
 
         #region HttpServices
 

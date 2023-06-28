@@ -1,3 +1,5 @@
+using ProjetoAnime.Core.Communication;
+
 namespace ProjetoAnime.Webapp.MVC.Models.Identidade;
 
 public class UsuarioLoginViewModel
@@ -16,11 +18,6 @@ public class UsuarioRegistroViewModel
     [DisplayName("Nome Completo")]
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
     public string Nome { get; set; }
-
-
-    [DisplayName("CPF")]
-    [Required(ErrorMessage = "O campo {0} é obrigatório")]
-    public string Cpf { get; set; }
 
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
     [EmailAddress(ErrorMessage = "O campo {0} está em formato inválido")]
@@ -44,6 +41,8 @@ public class UsuarioRespostaLogin
     public double ExpiresIn { get; set; }
 
     public UsuarioToken UsuarioToken { get; set; }
+
+    public ResponseResult ResponseResult { get; set; }
 }
 
 public class UsuarioToken
