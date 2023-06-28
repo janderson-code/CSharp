@@ -22,10 +22,10 @@ public class TradutorServiceDeepL : ITradutorService
         request.Content = formData;
 
         // Enviar a requisição
-        var response = await _httpClient.SendAsync(request);
+        var response = _httpClient.SendAsync(request).Result;
 
         // Processar a resposta
-        var responseBody = await response.Content.ReadAsStringAsync();
+        var responseBody = response.Content.ReadAsStringAsync().Result;
 
         // Aqui você pode fazer o parsing da resposta para obter a tradução desejada
         // O formato da resposta depende da estrutura do JSON retornado pelo DeepL
