@@ -35,7 +35,7 @@ public class MangaRepository : IMangaRepository
         _context.Mangas.Update(manga);
         _context.Commit();
     }
-    
+
     public void Dispose()
     {
         _context.Dispose();

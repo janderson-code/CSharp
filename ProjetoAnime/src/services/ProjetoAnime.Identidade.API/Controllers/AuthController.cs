@@ -76,17 +76,17 @@ namespace ProjetoAnime.Identidade.API.Controllers
         private async Task<UsuarioRespostaLogin> GerarJwt(string email)
         {
             var user = _userManager.FindByEmailAsync(email).Result; // Obter usuário pelo email
-            var claims = _userManager.GetClaimsAsync(user).Result; //  Obter as Claims deste usuário 
+            var claims = _userManager.GetClaimsAsync(user).Result; //  Obter as Claims deste usuário
             var userRoles = _userManager.GetRolesAsync(user).Result; // Obter as Roles deste Usuário
 
-            //Adicionando mais claims do Tipo JWT na lista de Claims do usuário 
+            //Adicionando mais claims do Tipo JWT na lista de Claims do usuário
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())); // ID do token
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf,
                 ToUnixEpochDate(DateTime.UtcNow).ToString())); // Quando o token vai expirar
             claims.Add(new Claim(JwtRegisteredClaimNames.Iat,
-                ToUnixEpochDate(DateTime.UtcNow).ToString(), // Quando o token foi emitido 
+                ToUnixEpochDate(DateTime.UtcNow).ToString(), // Quando o token foi emitido
                 ClaimValueTypes.Integer64));
 
             //Pegamos cada role do usuario e criamos uma claim para cada e adionamos na nossa lista de claims
@@ -99,7 +99,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(claims);
 
-            //Gerando o manipulador do Token						
+            //Gerando o manipulador do Token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
@@ -115,7 +115,7 @@ namespace ProjetoAnime.Identidade.API.Controllers
             //Codificando o Token
             var encodedToken = tokenHandler.WriteToken(token);
 
-            // Retornando o Usuário com o token	
+            // Retornando o Usuário com o token
             return new UsuarioRespostaLogin
             {
                 AccessToken = encodedToken,

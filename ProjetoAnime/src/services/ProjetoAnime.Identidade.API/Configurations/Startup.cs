@@ -3,6 +3,7 @@ namespace ProjetoAnime.Identidade.API.Configurations;
 public class Startup : IStartup
 {
     public IConfiguration Configuration { get; }
+
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
@@ -15,7 +16,6 @@ public class Startup : IStartup
 
     public void ConfigureService(IServiceCollection services)
     {
-
         services.AddApiConfig(Configuration);
     }
 }

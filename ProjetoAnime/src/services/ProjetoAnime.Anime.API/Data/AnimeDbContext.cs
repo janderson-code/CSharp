@@ -2,19 +2,19 @@ using ProjetoAnime.Core.Data;
 
 namespace ProjetoAnime.Anime.API.Data;
 
-public class AnimeDbContext :DbContext, IUnitOfWork
+public class AnimeDbContext : DbContext, IUnitOfWork
 {
     public AnimeDbContext(DbContextOptions<AnimeDbContext> options)
         : base(options) { }
-    
+
     public DbSet<Models.Anime> Animes { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                      e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-            property.SetColumnType("varchar(100)"); 
-        
+            property.SetColumnType("varchar(100)");
+
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AnimeDbContext).Assembly);
     }
 
@@ -27,6 +27,7 @@ public class AnimeDbContext :DbContext, IUnitOfWork
             );
         }
     }
+
     public async Task<bool> Commit()
     {
         return await base.SaveChangesAsync() > 0;

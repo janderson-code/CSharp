@@ -16,7 +16,7 @@ public class Startup : IStartup
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-           app.UseSwaggerConfiguration();
+            app.UseSwaggerConfiguration();
         }
 
         app.AddConfigureMigrate();
@@ -34,7 +34,5 @@ public class Startup : IStartup
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerConfiguration();
-        
-        
     }
 }

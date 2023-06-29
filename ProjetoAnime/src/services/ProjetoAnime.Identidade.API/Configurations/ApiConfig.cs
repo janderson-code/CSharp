@@ -4,7 +4,6 @@ namespace ProjetoAnime.Identidade.API.Configurations
 {
     public static class ApiConfig
     {
-
         public static IServiceCollection AddApiConfig(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllers();
@@ -28,8 +27,6 @@ namespace ProjetoAnime.Identidade.API.Configurations
             app.MapControllers();
 
             return app;
-
         }
-
     }
 }

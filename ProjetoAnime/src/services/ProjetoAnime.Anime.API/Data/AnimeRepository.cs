@@ -26,7 +26,7 @@ public class AnimeRepository : IAnimeRepository
     public void Adicionar(Models.Anime anime)
     {
         _context.Animes.Add(anime);
-         _context.Commit().Wait();
+        _context.Commit().Wait();
     }
 
     public void Atualizar(Models.Anime anime)
@@ -34,10 +34,9 @@ public class AnimeRepository : IAnimeRepository
         _context.Animes.Update(anime);
         _context.Commit().Wait();
     }
-    
+
     public void Dispose()
     {
         _context?.Dispose();
     }
-
 }

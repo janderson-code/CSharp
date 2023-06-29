@@ -9,7 +9,7 @@ public static class DependencyInjectionConfig
     {
         services.AddScoped<IAnimeRepository, AnimeRepository>();
         services.AddScoped<AnimeDbContext>();
-        
+
         return services;
     }
 }

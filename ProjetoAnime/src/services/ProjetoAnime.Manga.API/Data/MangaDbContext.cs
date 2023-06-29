@@ -7,15 +7,15 @@ public class MangaDbContext : DbContext, IUnitOfWork
 {
     public MangaDbContext(DbContextOptions<MangaDbContext> options)
         : base(options) { }
-    
+
     public DbSet<Models.Manga> Mangas { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                      e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-            property.SetColumnType("varchar(100)"); 
-        
+            property.SetColumnType("varchar(100)");
+
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MangaDbContext).Assembly);
     }
 
@@ -28,6 +28,7 @@ public class MangaDbContext : DbContext, IUnitOfWork
             );
         }
     }
+
     public async Task<bool> Commit()
     {
         return await base.SaveChangesAsync() > 0;

@@ -1,4 +1,3 @@
-
 namespace ProjetoAnime.Identidade.API.Data
 {
     public class AppDbContext : IdentityDbContext
