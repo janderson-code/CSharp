@@ -6,9 +6,7 @@ public class MangaKitsuResponse
 
     [JsonProperty("meta")]
     public Meta Meta { get; set; }
-
-    [JsonProperty("links")]
-    public Links Links { get; set; }
+    
 }
 
 public class MangaData
@@ -18,10 +16,7 @@ public class MangaData
 
     [JsonProperty("type")]
     public string Type { get; set; }
-
-    [JsonProperty("links")]
-    public Links Links { get; set; }
-
+    
     [JsonProperty("attributes")]
     public MangaAttributes Attributes { get; set; }
 
@@ -29,7 +24,7 @@ public class MangaData
     public Relationships Relationships { get; set; }
 }
 
-public class Links
+public class Link
 {
     [JsonProperty("self")]
     public string Self { get; set; }
@@ -153,6 +148,10 @@ public class PosterImage
 
     [JsonProperty("small")]
     public string Small { get; set; }
+    
+    [JsonProperty("medium")]
+    public string Medium { get; set; }
+
 
     [JsonProperty("meta")]
     public Meta Meta { get; set; }
@@ -168,6 +167,9 @@ public class CoverImage
 
     [JsonProperty("small")]
     public string Small { get; set; }
+    
+    [JsonProperty("medium")]
+    public string Medium { get; set; }
 
     [JsonProperty("original")]
     public string Original { get; set; }
@@ -185,16 +187,16 @@ public class Meta
 public class Dimensions
 {
     [JsonProperty("tiny")]
-    public Dimension Tiny { get; set; }
+    public DimensionImage Tiny { get; set; }
 
     [JsonProperty("large")]
-    public Dimension Large { get; set; }
+    public DimensionImage Large { get; set; }
 
     [JsonProperty("small")]
-    public Dimension Small { get; set; }
+    public DimensionImage Small { get; set; }
 }
 
-public class Dimension
+public class DimensionImage
 {
     [JsonProperty("width")]
     public int? Width { get; set; }
@@ -251,5 +253,5 @@ public class Relationships
 public class RelationshipItem
 {
     [JsonProperty("links")]
-    public Links Links { get; set; }
+    public Link Links { get; set; }
 }
