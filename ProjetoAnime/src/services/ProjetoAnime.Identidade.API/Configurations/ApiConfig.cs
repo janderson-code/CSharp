@@ -10,7 +10,7 @@ namespace ProjetoAnime.Identidade.API.Configurations
             services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerConfiguration();
             services.AddIdentityConfig(configuration);
             return services;
         }
@@ -20,8 +20,7 @@ namespace ProjetoAnime.Identidade.API.Configurations
             // Configure the HTTP request pipeline.
             if (env.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerConfiguration();
             }
 
             app.UseHttpsRedirection();
