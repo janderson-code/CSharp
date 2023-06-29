@@ -28,6 +28,12 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    public IActionResult PageDesenvolvedor()
+    {
+        return PartialView("_Desenvolvedor");
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
