@@ -1,6 +1,4 @@
-﻿using ProjetoAnime.Webapp.MVC.Extensions;
-
-namespace ProjetoAnime.Webapp.MVC.Configuration
+﻿namespace ProjetoAnime.Webapp.MVC.Configuration
 {
     public class Startup : IStartup
     {
@@ -19,7 +17,6 @@ namespace ProjetoAnime.Webapp.MVC.Configuration
         public void ConfigureService(IServiceCollection services)
         {
             services.WebApiConfig(Configuration);
-
         }
     }
 }

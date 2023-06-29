@@ -3,7 +3,6 @@
     public class MangaKitsuViewModel
     {
         public List<MangaDataViewModel> Data { get; set; }
-
     }
 
     public class MangaDataViewModel

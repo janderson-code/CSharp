@@ -1,12 +1,12 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Options;
 using ProjetoAnime.Core.API.User;
 using ProjetoAnime.Core.Communication;
 using ProjetoAnime.Webapp.MVC.Extensions;
 using ProjetoAnime.Webapp.MVC.Models.Identidade;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace ProjetoAnime.Webapp.MVC.Services
 {
@@ -23,7 +23,6 @@ namespace ProjetoAnime.Webapp.MVC.Services
             _authenticationService = authenticationService;
             _httpClient.BaseAddress = new Uri(options.Value.AutenticationUrl);
         }
-
 
         private readonly HttpClient _httpClient;
         private readonly IAspNetUser _aspNetUser;

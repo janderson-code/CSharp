@@ -4,7 +4,8 @@ namespace ProjetoAnime.Webapp.MVC.Extensions;
 
 public class CustomHttpRequestException : Exception
 {
-    public CustomHttpRequestException() {}
+    public CustomHttpRequestException()
+    { }
 
     public CustomHttpRequestException(HttpStatusCode statusCode)
     {
@@ -12,7 +13,7 @@ public class CustomHttpRequestException : Exception
     }
 
     public CustomHttpRequestException(string message, Exception innerException)
-        : base(message, innerException) {}
+        : base(message, innerException) { }
 
     public HttpStatusCode StatusCode { get; private set; }
 }

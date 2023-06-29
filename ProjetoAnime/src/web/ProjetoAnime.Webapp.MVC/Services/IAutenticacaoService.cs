@@ -1,5 +1,5 @@
-using System.IdentityModel.Tokens.Jwt;
 using ProjetoAnime.Webapp.MVC.Models.Identidade;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace ProjetoAnime.Webapp.MVC.Services;
 

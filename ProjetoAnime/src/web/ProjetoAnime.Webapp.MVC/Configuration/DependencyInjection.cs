@@ -15,6 +15,6 @@ public static class DependencyInjection
 
         services.AddHttpClient<IKitsuService, KitsuService>();
 
-        #endregion
+        #endregion HttpServices
     }
 }

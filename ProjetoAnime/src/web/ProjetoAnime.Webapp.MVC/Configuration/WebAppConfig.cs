@@ -4,7 +4,6 @@ namespace ProjetoAnime.Webapp.MVC.Configuration
 {
     public static class WebAppConfig
     {
-
         public static IServiceCollection WebApiConfig(this IServiceCollection services, IConfiguration configuration)
         {
             services.Register();
@@ -37,6 +36,5 @@ namespace ProjetoAnime.Webapp.MVC.Configuration
 
             return app;
         }
-
     }
 }

@@ -32,7 +32,7 @@ public class Tests
         Assert.IsTrue(result);
     }
 
-    [TestCase(TestName = "ApiAnimeDeveTerDependenciaCore")]
+    [TestCase(TestName = "Api Anime dever ter dependências com projetos Core")]
     public void AnimeAPI_Should_haveDependencyOnOtherProjects()
     {
         // Arrange

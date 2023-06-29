@@ -1,7 +1,7 @@
-using System.Text;
 using Newtonsoft.Json;
 using ProjetoAnime.Core.Communication;
 using ProjetoAnime.Webapp.MVC.Extensions;
+using System.Text;
 
 namespace ProjetoAnime.Webapp.MVC.Services;
 
@@ -14,7 +14,7 @@ public abstract class Service
 
     protected async Task<T> DeserializarObjetoResponse<T>(HttpResponseMessage responseMessage)
     {
-        string content =  responseMessage.Content.ReadAsStringAsync().Result;
+        string content = responseMessage.Content.ReadAsStringAsync().Result;
         return JsonConvert.DeserializeObject<T>(content);
     }
 
