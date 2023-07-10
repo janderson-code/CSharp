@@ -29,7 +29,7 @@ namespace SeuNamespace
                     {
                         try
                         {
-                            PixPaymentRequest pixPaymentRequest = new PixPaymentRequest
+                            PixPaymentRequest pixPaymentRequest = new PixPaymentRequest'
                             {
                                 // Configurações do PixPaymentRequest
                             };
