@@ -1,4 +1,4 @@
-using br.com.sharklab.elasticsearch;
+﻿using br.com.sharklab.elasticsearch;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.Controllers;
