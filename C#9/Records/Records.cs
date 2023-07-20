@@ -75,6 +75,7 @@ public class Program{
 
 
 public record Cliente{
+
     public string Nome  { get;init;}
     public string Sexo { get; init; }    
 
