@@ -1,6 +1,3 @@
-using Domain.BankIntegration.Interfaces;
-using Domain.BankIntegration.Models.BancoRendimento.Response;
-using Domain.BankIntegration.Models.Request;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -9,14 +6,14 @@ namespace Domain.BankIntegration.Services.BancoRendimento
     public partial class RevindicacaoPortabilidadeService : IRevindicacaoPortabilidadeService
     {
         private readonly IHttpClientHelper _httpClientHelper;
-        private const string SERVICEURL = "pi/api/v1/Reivindicacao/";
+        private const string SERVICEURL = "pi/api/v1/service/";
 
         public RevindicacaoPortabilidadeService(IHttpClientHelper httpClientHelper)
         {
             _httpClientHelper = httpClientHelper;
         }
 
-        private TResponse Reivindicacao<TResponse>(HttpResponseMessage response)
+        private TResponse SerializacaoGenerica<TResponse>(HttpResponseMessage response)
             where TResponse : BankBaseResponse, new()
         {
             if (response == null)
@@ -25,26 +22,26 @@ namespace Domain.BankIntegration.Services.BancoRendimento
             return response.Deserializar<TResponse>();
         }
 
-        public async Task<IncluirReivindicacaoResponse> IncluirReivindicacao(RevindicacaoPortabilidadeRequest revindicacaoPortabilidadeRequest)
+        public async Task<IncluirReivindicacaoResponse> IncluirProduto(ProdutoRequest ProdutoRequest)
         {
             return
-                Reivindicacao<IncluirReivindicacaoResponse>(_httpClientHelper.Post(SERVICEURL, $"reivindicacoes", revindicacaoPortabilidadeRequest).Result
+                SerializacaoGenerica<IncluirReivindicacaoResponse>(_httpClientHelper.Post(SERVICEURL, $"reivindicacoes", revindicacaoPortabilidadeRequest).Result
             );
         }
 
-        public async Task<ConsultarReivindicacaoResponse> ConsultarReivindicacaoById(string incricaoNacional, string ispbParticipante, string reivindicacaoId)
+        public async Task<ConsultarReivindicacaoResponse> ConsultarProdutoById(string cpf, string isp, string id)
         {
             return
-                Reivindicacao<ConsultarReivindicacaoResponse>(
-                  _httpClientHelper.Get(SERVICEURL, $"reivindicacoes/{reivindicacaoId}?InscricaoNacional={incricaoNacional}&IspbParticipante={ispbParticipante}").Result
+                SerializacaoGenerica<ConsultarReivindicacaoResponse>(
+                  _httpClientHelper.Get(SERVICEURL, $"produtos/{id}?cpf={incricaoNacional}&Isp={isp}").Result
                 );
         }
 
-        public async Task<AlterarStatusReivindicacaoResponse> AlterarStatusReivindicacao(AlterarStatusReivindicacaoRequest alterarStatusReivindicacaoRequest)
+        public async Task<AlterarStatusReivindicacaoResponse> AlterarStatusProduto(AlterarStatusProdutoRequest AlterarStatusProduto)
         {
             return
-             Reivindicacao<AlterarStatusReivindicacaoResponse>(
-              _httpClientHelper.Patch(SERVICEURL, $"reivindicacoes", alterarStatusReivindicacaoRequest).Result
+             SerializacaoGenerica<AlterarStatusReivindicacaoResponse>(
+              _httpClientHelper.Patch(SERVICEURL, $"produtos", AlterarStatusProduto).Result
               );
         }
     }
