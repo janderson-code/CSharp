@@ -10,6 +10,10 @@ public delegate int del (int x);
 public  delegate void Deltexto(string texto);
 
 
+//Example 3
+public delegate int DelegateCalc(int num1, int num2);  
+
+
 public class Program
 {
     public static void Main(string[] args)
@@ -132,4 +136,18 @@ class Usuario
     {
         Console.WriteLine("Nova mensagem de {0}: {1}", remetente, mensagem);
     }
+}
+
+public class Calculadora
+{
+    public int Add(int num, int num2)
+    {
+        return num +  num2;
+    }
+
+    public int Multiply(int num, int num2)
+    {
+        return num * num2;
+    }
+
 }

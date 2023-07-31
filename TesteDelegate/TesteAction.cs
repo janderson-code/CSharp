@@ -48,3 +48,49 @@ public class Clube{
 		clube.Nome = "Barcelona";
 	}
 }
+
+public class TesteAction
+{
+
+    public void Teste()
+    {
+
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+        // Declaração de variáveis para armazenar os resultados.
+        int sum = 0;
+        int product = 1;
+        int max = int.MinValue;
+
+        // Usando Action para realizar várias operações na lista.
+        Action<int> operationsAction = (number) =>
+        {
+            sum += number;
+            product *= number;
+            max = Math.Max(max, number);
+        };
+
+        // Executando a ação em cada número da lista.
+        numbers.ForEach(operationsAction);
+
+        // Imprimindo os resultados.
+        Console.WriteLine($"Soma dos números: {sum}");
+        Console.WriteLine($"Produto dos números: {product}");
+        Console.WriteLine($"Maior número: {max}");
+    }
+
+    public void Teste02()
+    {
+        List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+        // Exemplo usando Action para imprimir cada número da lista.
+        Action<int> printNumberAction = (number) => Console.WriteLine(number);
+
+        // Exemplo usando Action para dobrar cada número da lista.
+        Action<int> doubleNumberAction = (number) => Console.WriteLine($"O dobro de {number} é {number * 2}.");
+
+        // Executando as ações em cada número da lista.
+        numbers.ForEach(printNumberAction);
+        numbers.ForEach(doubleNumberAction);
+    }
+}
