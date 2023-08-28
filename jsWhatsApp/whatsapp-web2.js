@@ -36,13 +36,6 @@ client.on('ready', () => {
     console.log('Client is ready!');
 });
 
-
-// client.on('message', message => {
-// 	if(message.body === '!ping') {
-// 		client.sendMessage(message.from, 'pong');
-// 	}
-// });
-
 client.on('message', message => {
     if (message.body.includes("Janderson")) {
         message.reply(message.body.replace("Janderson", "Janderson✅"));
