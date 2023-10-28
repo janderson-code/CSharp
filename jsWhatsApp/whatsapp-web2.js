@@ -37,9 +37,16 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.body.includes("Janderson")) {
-        message.reply(message.body.replace("Janderson", "Janderson✅"));
+    var contact = message.getContact();
+    if (contact.IsMyContact) {
+        message.reply(contact.getAbout());
+        message.reply("Não posso falar no momento 😞");
+    } else {
+        contact.block()
     }
+    // if (message.body.includes("Amor") || message.body.includes("noite")) {
+    //     message.reply("Valor do Atendimento??");
+    // }
 });
 
 client.initialize();
